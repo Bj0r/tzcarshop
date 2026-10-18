@@ -1,0 +1,1624 @@
+/*
+ * FurEver's pear-and-mint theme.
+ * This file loads after each page-specific stylesheet so the shop, account
+ * screens, cart, and management area share the exact same visual language.
+ */
+:root {
+    --fur-perfect-pear: #08080D;
+    --fur-avocado: #0E1017;
+    --fur-jujube: #DFBA73;
+    --fur-belltone: #60A5FA;
+    --fur-peppermint: #141722;
+    --fur-frost: #040407;
+    --fur-ink: #FFFFFF;
+    --fur-ink-soft: rgba(255, 255, 255, 0.78);
+    --fur-line: rgba(255, 255, 255, 0.12);
+    --fur-surface: #08080D;
+    --fur-shadow: rgba(0, 0, 0, 0.8);
+
+    /* Compatibility tokens used across TZ Carshop views */
+    --fur-orange: #DFBA73;
+    --fur-orange-light: #60A5FA;
+    --fur-green: #DFBA73;
+    --fur-blue: #60A5FA;
+    --fur-cream: #08080D;
+    --fur-slate-900: #FFFFFF;
+    --fur-slate-700: rgba(255, 255, 255, 0.82);
+    --fur-slate-500: rgba(255, 255, 255, 0.62);
+    --fur-slate-200: rgba(255, 255, 255, 0.14);
+    --fur-forest: #DFBA73;
+    --fur-forest-deep: #040407;
+    --fur-sage: #60A5FA;
+    --fur-sage-light: #141722;
+    --fur-cream-deep: #08080D;
+    --fur-clay: #0E1017;
+}
+
+/* Shared canvas, navigation, buttons, feedback, and form controls. */
+body {
+    background: #040407 !important;
+    color: #FFFFFF !important;
+}
+
+/* Ensure NO underline on hover, focus, or active states for any links, buttons, or words */
+a,
+a:hover,
+a:focus,
+a:active,
+button,
+button:hover,
+button:focus,
+button:active,
+.btn,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.fur-button,
+.fur-button:hover,
+.fur-button:focus,
+.fur-button:active,
+.fur-boutique-button,
+.fur-boutique-button:hover,
+.fur-boutique-button:focus,
+.fur-boutique-button:active,
+.fur-boutique-text-link,
+.fur-boutique-text-link:hover,
+.fur-boutique-text-link:focus,
+.fur-boutique-all-link,
+.fur-boutique-all-link:hover,
+.fur-boutique-all-link:focus,
+.fur-boutique-landing-hero__text-link,
+.fur-boutique-landing-hero__text-link:hover,
+.fur-boutique-landing-hero__text-link:focus,
+.fur-boutique-landing-note__arrow,
+.fur-boutique-landing-note__arrow:hover,
+.fur-boutique-category-card,
+.fur-boutique-category-card:hover,
+.fur-boutique-product-card,
+.fur-boutique-product-card:hover,
+.fur-storefront a,
+.fur-storefront a:hover,
+.fur-storefront a:focus,
+.fur-boutique a,
+.fur-boutique a:hover,
+.fur-boutique a:focus,
+.furever-page a,
+.furever-page a:hover,
+.furever-page a:focus,
+.fur-navigation a,
+.fur-navigation a:hover,
+.fur-navigation a:focus,
+.fur-boutique-footer a,
+.fur-boutique-footer a:hover,
+.fur-boutique-footer a:focus {
+    text-decoration: none !important;
+}
+
+.fur-storefront,
+.furever-page,
+.fur-login-page {
+    min-height: 100vh;
+    color: var(--fur-ink);
+    background:
+        radial-gradient(circle at 4% 3%, rgba(201, 169, 110, 0.07), transparent 26rem),
+        radial-gradient(circle at 96% 7%, rgba(255, 255, 255, 0.08), transparent 29rem),
+        linear-gradient(135deg, var(--fur-frost) 0%, var(--fur-perfect-pear) 52%, var(--fur-peppermint) 100%);
+}
+
+.fur-card,
+.fur-boutique-filter-card,
+.fur-boutique-category-card,
+.fur-boutique-product-card,
+.product-form-card,
+.admin-stat-card,
+.admin-table-card,
+.cart-item,
+.cart-summary,
+.empty-cart,
+.fur-login-card {
+    border-color: var(--fur-line);
+    background: var(--fur-surface);
+    box-shadow: 0 18px 42px -32px var(--fur-shadow);
+}
+
+.fur-navigation,
+.fur-boutique .fur-navigation {
+    border-bottom-color: var(--fur-line);
+    background: rgba(74, 144, 217, 0.14);
+    box-shadow: 0 10px 28px -25px var(--fur-shadow);
+    backdrop-filter: blur(16px);
+}
+
+.fur-brand,
+.fur-brand:hover,
+.fur-boutique .fur-brand,
+.fur-boutique .fur-brand:hover,
+.fur-admin-sidebar__brand,
+.fur-admin-sidebar__brand:hover {
+    color: var(--fur-ink);
+}
+
+.fur-navigation__links,
+.fur-boutique .fur-navigation__links {
+    gap: 4px;
+    border-color: rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, .08);
+    padding: 4px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+.fur-navigation__links a,
+.fur-cart-link,
+.fur-orders-link,
+.fur-login-link,
+.fur-dashboard-link,
+.fur-logout-form button,
+.fur-mobile-menu summary,
+.fur-mobile-menu a,
+.fur-mobile-logout-form button {
+    color: var(--fur-ink-soft);
+}
+
+.fur-boutique .fur-navigation__links a,
+.fur-boutique .fur-cart-link,
+.fur-boutique .fur-orders-link,
+.fur-boutique .fur-login-link,
+.fur-boutique .fur-logout-form button {
+    color: var(--fur-ink-soft);
+}
+
+.fur-navigation__links a,
+.fur-boutique .fur-navigation__links a {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0 14px;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.fur-navigation__links a:hover,
+.fur-boutique .fur-navigation__links a:hover {
+    border-bottom: 0;
+    background: rgba(201, 169, 110, 0.13);
+    color: var(--fur-ink);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.fur-navigation__links a.is-active,
+.fur-boutique .fur-navigation__links a.is-active {
+    border-bottom: 0;
+    background: var(--fur-ink);
+    color: var(--fur-frost);
+    box-shadow: 0 5px 12px -8px rgba(0, 0, 0, .72);
+    text-decoration: none;
+}
+
+.fur-navigation__links a:focus-visible,
+.fur-boutique .fur-navigation__links a:focus-visible {
+    outline: 3px solid rgba(201, 169, 110, 0.09);
+    outline-offset: 2px;
+}
+
+.fur-orders-link:hover,
+.fur-orders-link.is-active,
+.fur-login-link:hover,
+.fur-dashboard-link:hover,
+.fur-logout-form button:hover,
+.fur-mobile-menu a:hover,
+.fur-mobile-logout-form button:hover {
+    border-color: var(--fur-jujube);
+    background: rgba(201, 169, 110, 0.1);
+    color: var(--fur-ink);
+    box-shadow: none;
+}
+
+.fur-cart-link,
+.fur-orders-link,
+.fur-login-link,
+.fur-dashboard-link,
+.fur-logout-form button,
+.fur-mobile-menu summary,
+.fur-mobile-menu > div {
+    border-color: var(--fur-line);
+    background: rgba(74, 144, 217, 0.14);
+}
+
+.fur-boutique .fur-cart-link,
+.fur-boutique .fur-orders-link,
+.fur-boutique .fur-login-link,
+.fur-boutique .fur-logout-form button {
+    border-color: var(--fur-line);
+    background: rgba(74, 144, 217, 0.14);
+}
+
+.fur-cart-link:hover,
+.fur-cart-link.is-active,
+.fur-boutique .fur-cart-link:hover,
+.fur-boutique .fur-cart-link.is-active {
+    border-color: var(--fur-jujube);
+    background: var(--fur-jujube);
+    color: var(--fur-frost);
+}
+
+.fur-cart-link span,
+.fur-boutique .fur-cart-link span {
+    background: var(--fur-jujube);
+    color: var(--fur-frost);
+}
+
+.fur-cart-link:hover span,
+.fur-cart-link.is-active span,
+.fur-boutique .fur-cart-link:hover span,
+.fur-boutique .fur-cart-link.is-active span {
+    background: var(--fur-frost);
+    color: var(--fur-ink);
+}
+
+.fur-login-link--primary,
+.fur-boutique .fur-login-link--primary,
+.fur-button,
+.fur-boutique-button,
+.fur-boutique-add-button,
+.fur-boutique-filter-form button,
+.btn-furever-primary,
+.checkout-btn {
+    border-color: var(--fur-jujube);
+    background: linear-gradient(135deg, var(--fur-jujube), var(--fur-belltone));
+    color: var(--fur-frost);
+    box-shadow: 0 13px 24px -16px rgba(0, 0, 0, .78);
+}
+
+.fur-login-link--primary:hover,
+.fur-boutique .fur-login-link--primary:hover,
+.fur-button:hover,
+.fur-boutique-button:hover,
+.fur-boutique-add-button:hover:not(:disabled),
+.fur-boutique-filter-form button:hover,
+.btn-furever-primary:hover,
+.checkout-btn:hover {
+    border-color: var(--fur-ink);
+    background: var(--fur-ink);
+    color: var(--fur-frost);
+}
+
+.fur-button--secondary,
+.btn-furever-secondary,
+.cancel-btn,
+.back-button {
+    border-color: var(--fur-belltone);
+    background: rgba(201, 169, 110, 0.11);
+    color: var(--fur-ink);
+}
+
+.fur-button--secondary:hover,
+.btn-furever-secondary:hover,
+.cancel-btn:hover,
+.back-button:hover {
+    border-color: var(--fur-jujube);
+    background: var(--fur-avocado);
+    color: var(--fur-ink);
+}
+
+.fur-account-name,
+.fur-boutique .fur-account-name {
+    border-color: var(--fur-line);
+    background: rgba(201, 169, 110, 0.12);
+    color: var(--fur-ink);
+}
+
+.fur-message,
+.furever-alert {
+    border: 1px solid var(--fur-belltone);
+    background: rgba(201, 169, 110, 0.12);
+    color: var(--fur-ink);
+}
+
+.fur-message--success,
+.furever-alert.success {
+    border-color: var(--fur-belltone);
+    background: rgba(201, 169, 110, 0.13);
+    color: var(--fur-ink);
+}
+
+.fur-message--error,
+.fur-field-error,
+.furever-alert.error {
+    border-color: var(--fur-avocado);
+    background: rgba(201, 169, 110, 0.11);
+    color: var(--fur-ink);
+}
+
+.fur-login-form input:not([type="checkbox"]),
+.fur-admin-search input,
+.fur-status-form select,
+.fur-boutique-filter-form select,
+.fur-boutique-search-field input,
+.form-group-furever input,
+.form-group-furever textarea,
+.form-group-furever select,
+.cart-quantity input,
+.product-search input,
+.category-filter select {
+    border-color: var(--fur-belltone);
+    background: rgba(74, 144, 217, 0.13);
+    color: var(--fur-ink);
+}
+
+.fur-login-form input:focus,
+.fur-admin-search input:focus,
+.fur-status-form select:focus,
+.fur-boutique-filter-form select:focus,
+.fur-boutique-search-field input:focus,
+.form-group-furever input:focus,
+.form-group-furever textarea:focus,
+.form-group-furever select:focus,
+.cart-quantity input:focus,
+.product-search input:focus,
+.category-filter select:focus {
+    border-color: var(--fur-jujube);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.07);
+}
+
+input[type="checkbox"] { accent-color: var(--fur-jujube); }
+
+.fur-password-field {
+    position: relative;
+}
+
+.fur-password-field input {
+    padding-right: 48px !important;
+}
+
+.fur-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fur-ink-soft);
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.fur-password-toggle:hover,
+.fur-password-toggle[aria-pressed="true"] {
+    color: var(--fur-jujube);
+}
+
+.fur-password-toggle:focus-visible {
+    outline: 2px solid var(--fur-jujube);
+    outline-offset: 1px;
+}
+
+/* Storefront: a cool, lightly layered pear-and-mint boutique. */
+.fur-boutique {
+    background:
+        radial-gradient(circle at 12% 16%, rgba(201, 169, 110, 0.07), transparent 25rem),
+        radial-gradient(circle at 86% 24%, rgba(255, 255, 255, 0.08), transparent 26rem),
+        linear-gradient(145deg, var(--fur-frost), var(--fur-perfect-pear));
+}
+
+.fur-boutique-hero::before {
+    width: 49%;
+    border-radius: 0 0 0 48%;
+    background: linear-gradient(145deg, rgba(201,169,110,0.1), rgba(74,144,217,0.06));
+}
+
+.fur-boutique-eyebrow,
+.fur-boutique-text-link,
+.fur-boutique-all-link,
+.fur-boutique .fur-orders-link:hover,
+.fur-boutique .fur-orders-link.is-active {
+    color: var(--fur-ink);
+}
+
+.fur-boutique-text-link:hover,
+.fur-boutique-all-link:hover,
+.fur-boutique-filter-reset:hover { color: var(--fur-jujube); }
+
+.fur-boutique-hero h1,
+.fur-boutique-heading h2,
+.fur-boutique-product-card h2,
+.fur-boutique-product-card h3,
+.fur-boutique-shop__intro h1,
+.fur-boutique-feature h2,
+.fur-boutique-promise__grid h3 {
+    color: var(--fur-ink);
+}
+
+.fur-boutique-hero__lede,
+.fur-boutique-heading > p:not(.fur-boutique-eyebrow),
+.fur-boutique-product-card p,
+.fur-boutique-promise__grid p,
+.fur-boutique-shop__intro p:not(.fur-boutique-eyebrow),
+.fur-boutique-shop__results,
+.fur-boutique-footer a {
+    color: var(--fur-ink-soft);
+}
+
+.fur-boutique-proof,
+.fur-boutique-proof i,
+.fur-boutique-hero__tag,
+.fur-boutique-product-card__title-row strong,
+.fur-boutique-product-card__category,
+.fur-boutique-stock,
+.fur-boutique-shop__results p strong,
+.fur-boutique-shop__results > span strong {
+    color: var(--fur-ink);
+}
+
+.fur-boutique-hero__art {
+    border-color: rgba(74, 144, 217, 0.14);
+    background: linear-gradient(140deg, var(--fur-peppermint), var(--fur-avocado) 54%, var(--fur-perfect-pear));
+    box-shadow: 0 31px 58px -37px rgba(0, 0, 0, .62);
+}
+
+.fur-boutique-hero__sun { background: var(--fur-perfect-pear); }
+.fur-boutique-hero__floor { background: rgba(255, 255, 255, 0.08); }
+.fur-boutique-hero__paw { background: rgba(74, 144, 217, 0.13); color: var(--fur-jujube); }
+.fur-boutique-hero__tag,
+.fur-boutique-hero__pet-card,
+.fur-boutique-product-card__category { background: rgba(74, 144, 217, 0.14); }
+.fur-boutique-hero__pet-icon { background: var(--fur-perfect-pear); color: var(--fur-ink); }
+.fur-boutique-hero__pet-card strong { color: var(--fur-ink); }
+.fur-boutique-hero__pet-card small { color: var(--fur-ink-soft); }
+.fur-boutique-hero__spark { color: var(--fur-belltone); }
+.fur-boutique-hero__leaf { background: var(--fur-belltone); }
+.fur-boutique-hero__spark--three { color: var(--fur-jujube); }
+.fur-boutique-hero__leaf--two { background: var(--fur-avocado); }
+
+.fur-boutique-category-card,
+.fur-boutique-product-card,
+.fur-boutique-filter-card {
+    border-color: var(--fur-line);
+    background: rgba(74, 144, 217, 0.13);
+}
+
+.fur-boutique-category-card:hover,
+.fur-boutique-product-card:hover {
+    border-color: var(--fur-jujube);
+    box-shadow: 0 21px 35px -25px rgba(0, 0, 0, .62);
+}
+
+.fur-boutique-category-card__icon,
+.fur-boutique-promise__grid article > span {
+    background: var(--fur-peppermint);
+    color: var(--fur-ink);
+}
+
+.fur-boutique-category-card > .fa { color: var(--fur-belltone); }
+.fur-boutique-product-card__image { background: linear-gradient(145deg, var(--fur-frost), var(--fur-peppermint)); }
+.fur-boutique-product-card__image::after { background: rgba(201, 169, 110, 0.10); }
+.fur-boutique-product-card__image > i { color: var(--fur-jujube); }
+.fur-boutique-stock--out { color: var(--fur-ink-soft); }
+
+.fur-boutique-feature {
+    background: linear-gradient(125deg, var(--fur-jujube), var(--fur-belltone));
+    box-shadow: 0 24px 44px -34px rgba(0, 0, 0, .8);
+}
+
+.fur-boutique-feature::before { background: radial-gradient(circle at 83% 43%, rgba(201, 169, 110, 0.10), transparent 18rem); }
+.fur-boutique-feature .fur-boutique-eyebrow { color: var(--fur-perfect-pear); }
+.fur-boutique-feature h2 { color: var(--fur-frost); }
+.fur-boutique-feature__copy > p:not(.fur-boutique-eyebrow) { color: rgba(74, 144, 217, 0.14); }
+.fur-boutique-button--light { border-color: var(--fur-frost); background: var(--fur-frost); color: var(--fur-ink); }
+.fur-boutique-button--light:hover { background: var(--fur-perfect-pear); color: var(--fur-ink); }
+.fur-boutique-feature__moon { background: var(--fur-peppermint); }
+.fur-boutique-feature__art > i { color: var(--fur-ink); }
+.fur-boutique-feature__ball { background: var(--fur-avocado); }
+.fur-boutique-feature__star { color: var(--fur-perfect-pear); }
+
+.fur-boutique-footer { border-color: var(--fur-line); background: #08080D; }
+.fur-boutique-footer a:hover,
+.fur-boutique-footer__brand { color: var(--fur-ink) !important; }
+.fur-boutique-footer__brand span { color: var(--fur-belltone); }
+
+.fur-boutique-shop__intro {
+    border: 1px solid var(--fur-line);
+    background: linear-gradient(118deg, var(--fur-peppermint), var(--fur-perfect-pear));
+    box-shadow: 0 22px 38px -31px var(--fur-shadow);
+}
+
+.fur-boutique-shop__intro::after { background: rgba(74, 144, 217, 0.11); }
+.fur-boutique-shop__intro-mark { background: rgba(74, 144, 217, 0.13); color: var(--fur-jujube); }
+.fur-boutique-shop__results > span { background: rgba(201, 169, 110, 0.12); color: var(--fur-ink); }
+.fur-boutique-filter-form label,
+.fur-boutique-filter-reset,
+.fur-boutique-search-field i { color: var(--fur-ink-soft); }
+
+/* Accounts and administration inherit the same surfaces and contrast. */
+.fur-login-page {
+    display: grid;
+    place-items: center;
+    padding: 32px 20px;
+}
+
+.fur-login-card {
+    border-color: var(--fur-belltone);
+    background: rgba(74, 144, 217, 0.14);
+    box-shadow: 0 26px 58px -36px rgba(0, 0, 0, .62);
+}
+
+.fur-login-card__heading,
+.fur-login-card__heading h1 { color: var(--fur-ink); }
+.fur-login-card__switch,
+.fur-login-card__back,
+.fur-login-form label,
+.fur-login-form .fur-remember-me { color: var(--fur-ink-soft); }
+.fur-login-card__switch a,
+.fur-login-card__back:hover { color: var(--fur-jujube); }
+
+.fur-admin-sidebar {
+    border-right-color: var(--fur-line);
+    background: linear-gradient(180deg, var(--fur-frost), var(--fur-peppermint));
+    box-shadow: 13px 0 31px -28px rgba(0, 0, 0, .65);
+}
+
+.fur-admin-sidebar__brand strong,
+.fur-admin-sidebar__account strong,
+.fur-admin-sidebar__brand small,
+.fur-admin-sidebar__account span { color: var(--fur-ink); }
+.fur-admin-sidebar__label,
+.fur-admin-sidebar__nav a,
+.fur-admin-sidebar__nav a i,
+.fur-admin-sidebar__account button { color: var(--fur-ink-soft); }
+.fur-admin-sidebar__nav a:hover,
+.fur-admin-sidebar__nav a.is-active {
+    background: linear-gradient(90deg, rgba(201,169,110,0.1), rgba(74,144,217,0.08));
+    color: var(--fur-ink);
+}
+.fur-admin-sidebar__account { border-top-color: var(--fur-line); }
+.fur-admin-sidebar__account button:hover { color: var(--fur-jujube); }
+
+.fur-admin-page,
+.fur-customer-orders-page { color: var(--fur-ink); }
+.fur-admin-heading h1,
+.fur-customer-table-card__header h2,
+.fur-customer-orders-heading h1,
+.fur-customer-orders-card__header h2,
+.fur-customer-table strong { color: var(--fur-ink); }
+.fur-admin-heading > div > p:last-child,
+.fur-customer-table-card__header p,
+.fur-customer-orders-heading p:not(.fur-eyebrow),
+.fur-customer-orders-card__header p,
+.fur-order-customer-detail,
+.fur-customer-table__empty { color: var(--fur-ink-soft); }
+.fur-eyebrow,
+.fur-eyebrow--orange { color: var(--fur-ink); }
+
+.fur-admin-stat-grid article:nth-child(1),
+.fur-admin-stat-grid article:nth-child(2),
+.fur-admin-stat-grid article:nth-child(3),
+.fur-customer-orders-summary {
+    border: 1px solid var(--fur-line);
+    color: var(--fur-ink);
+}
+.fur-admin-stat-grid article:nth-child(1) { background: rgba(201,169,110,0.12); }
+.fur-admin-stat-grid article:nth-child(2) { background: rgba(74,144,217,0.12); }
+.fur-admin-stat-grid article:nth-child(3) { background: rgba(255,255,255,0.08); }
+.fur-admin-stat-grid span { color: var(--fur-ink-soft); }
+.fur-admin-stat-grid strong,
+.fur-customer-orders-summary strong { color: var(--fur-ink); }
+
+.fur-dashboard-action:hover {
+    border-color: var(--fur-jujube);
+    background: rgba(201, 169, 110, 0.1);
+    box-shadow: 0 17px 32px -25px var(--fur-shadow);
+}
+.fur-dashboard-action i { color: var(--fur-jujube); }
+.fur-dashboard-action h2,
+.fur-customer-table-card__header h2 { color: var(--fur-ink); }
+
+.fur-admin-search button {
+    border-color: var(--fur-jujube);
+    background: var(--fur-jujube);
+    color: var(--fur-frost);
+}
+.fur-admin-search button:hover { background: var(--fur-ink); }
+
+.fur-customer-table th,
+.fur-customer-table td { border-bottom-color: var(--fur-line); }
+.fur-customer-table th { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.88); }
+.fur-customer-table td,
+.fur-order-items { color: #FFFFFF; }
+
+.fur-order-status--pending { background: rgba(223, 186, 115, 0.18); color: #F0D59E; border: 1px solid rgba(223, 186, 115, 0.4); }
+.fur-order-status--processing { background: rgba(96, 165, 250, 0.18); color: #BFDBFE; border: 1px solid rgba(96, 165, 250, 0.4); }
+.fur-order-status--ready_for_collection { background: rgba(167, 139, 250, 0.18); color: #DDD6FE; border: 1px solid rgba(167, 139, 250, 0.4); }
+.fur-order-status--completed { background: rgba(52, 211, 153, 0.18); color: #A7F3D0; border: 1px solid rgba(52, 211, 153, 0.4); }
+.fur-order-status--cancelled { background: rgba(248, 113, 113, 0.18); color: #FECACA; border: 1px solid rgba(248, 113, 113, 0.4); }
+.fur-order-cancel-button { border-color: rgba(248, 113, 113, 0.4); background: rgba(248, 113, 113, 0.12); color: #FCA5A5; }
+.fur-order-cancel-button:hover { border-color: #F87171; background: rgba(248, 113, 113, 0.25); color: #FFFFFF; }
+.fur-order-action-note { color: rgba(255,255,255,0.72); }
+
+/* Legacy product management and cart screens use the same tokens. */
+.furever-page { font-family: "Instrument Sans", "Segoe UI", sans-serif; }
+.admin-header h1,
+.form-heading h1,
+.cart-heading h1,
+.admin-stat-card h2,
+.table-header h3,
+.table-product strong,
+.cart-product-info h3,
+.cart-summary h3,
+.empty-cart h2,
+.admin-empty-state h3 { color: var(--fur-ink); }
+.admin-header p,
+.form-heading p,
+.admin-stat-card span,
+.table-header p,
+.table-product span,
+.cart-heading p,
+.cart-product-info span,
+.cart-quantity label,
+.continue-shopping,
+.empty-cart p,
+.admin-empty-state p { color: var(--fur-ink-soft); }
+
+.section-label {
+    background: rgba(201, 169, 110, 0.11);
+    color: var(--fur-ink);
+}
+.admin-stat-card,
+.admin-table-card,
+.product-form-card,
+.cart-item,
+.cart-summary { border-color: var(--fur-line); }
+.admin-stat-icon.products,
+.admin-stat-icon.categories,
+.admin-stat-icon.stock,
+.table-placeholder,
+.cart-image {
+    background: var(--fur-peppermint);
+    color: var(--fur-ink);
+}
+.furever-table th { background: rgba(201,169,110,0.08); color: var(--fur-ink-soft); }
+.furever-table td { border-top-color: var(--fur-line); }
+.category-pill { background: var(--fur-frost); color: var(--fur-ink); }
+.stock-pill.available { background: var(--fur-peppermint); color: var(--fur-ink); }
+.stock-pill.unavailable { background: var(--fur-avocado); color: var(--fur-ink); }
+.table-price,
+.price-input span,
+.cart-product-info strong,
+.summary-row.total strong { color: var(--fur-jujube); }
+.edit-btn { background: var(--fur-frost); color: var(--fur-ink); }
+.delete-btn,
+.remove-cart-btn { border-color: var(--fur-avocado); background: var(--fur-perfect-pear); color: var(--fur-ink); }
+.image-upload-box { border-color: var(--fur-belltone); background: rgba(74, 144, 217, 0.11); color: var(--fur-ink-soft); }
+.image-upload-box i,
+.image-upload-box strong { color: var(--fur-ink); }
+.current-product-image img { border-color: var(--fur-peppermint); }
+.cart-selection input { accent-color: var(--fur-jujube); }
+.summary-row { border-bottom-color: var(--fur-line); color: var(--fur-ink-soft); }
+.product-search > i { color: var(--fur-ink-soft); }
+
+@media (max-width: 700px) {
+    .fur-boutique-hero::before { width: 72%; opacity: .64; }
+    .fur-login-page { padding: 22px 14px; }
+}
+
+/* Landing page: a playful editorial composition using the shared pear-and-mint palette. */
+.fur-boutique-landing-hero {
+    padding: clamp(28px, 5vw, 72px) 0 34px;
+}
+
+.fur-boutique-landing-hero::before {
+    display: none;
+}
+
+.fur-boutique-landing-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.23fr) minmax(360px, .77fr);
+    align-items: center;
+    gap: clamp(22px, 4vw, 62px);
+}
+
+.fur-boutique-landing-hero__main {
+    position: relative;
+    min-height: 555px;
+    overflow: hidden;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    border-radius: 34px;
+    background:
+        radial-gradient(circle at 88% 77%, rgba(201, 169, 110, 0.07), transparent 10rem),
+        linear-gradient(145deg, rgba(74, 144, 217, 0.15), rgba(201, 169, 110, 0.11));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(36px, 5vw, 68px) clamp(28px, 5vw, 64px);
+    box-shadow: 0 28px 70px -46px rgba(0, 0, 0, .72);
+}
+
+.fur-boutique-landing-hero__main::before,
+.fur-boutique-landing-hero__main::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+}
+
+.fur-boutique-landing-hero__main::before {
+    top: -80px;
+    right: -78px;
+    width: 216px;
+    height: 216px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+}
+
+.fur-boutique-landing-hero__main::after {
+    right: -74px;
+    bottom: -126px;
+    width: 344px;
+    height: 250px;
+    border-radius: 50% 0 0;
+    background: rgba(201, 169, 110, 0.12);
+    transform: rotate(-17deg);
+}
+
+.fur-boutique-landing-hero__copy {
+    position: relative;
+    z-index: 1;
+    max-width: 635px;
+}
+
+.fur-boutique-landing-hero__eyebrow,
+.fur-boutique-landing-note__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    border-radius: 999px;
+    background: rgba(201, 169, 110, 0.11);
+    padding: 8px 11px;
+    color: var(--fur-ink);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.fur-boutique-landing-hero__eyebrow i { color: var(--fur-jujube); }
+
+.fur-boutique-landing-hero h1 {
+    max-width: 610px;
+    margin: 24px 0 0;
+    color: var(--fur-ink);
+    font-family: "Instrument Sans", "Segoe UI", sans-serif;
+    font-size: clamp(42px, 5.2vw, 76px);
+    font-weight: 800;
+    letter-spacing: -.075em;
+    line-height: .99;
+}
+
+.fur-boutique-landing-hero__copy > p:not(.fur-boutique-landing-hero__eyebrow) {
+    max-width: 520px;
+    margin: 23px 0 0;
+    color: var(--fur-ink-soft);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.fur-boutique-landing-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 13px 23px;
+    margin-top: 29px;
+}
+
+.fur-boutique-landing-hero__actions .fur-boutique-button {
+    min-height: 49px;
+    padding-inline: 20px;
+}
+
+.fur-boutique-landing-hero__text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fur-ink);
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.fur-boutique-landing-hero__text-link:hover,
+.fur-boutique-landing-hero__text-link:focus { color: var(--fur-jujube); text-decoration: none !important; }
+
+.fur-boutique-landing-hero__stats {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 54px;
+    padding: 21px 0 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fur-boutique-landing-hero__stats div { min-width: 0; }
+.fur-boutique-landing-hero__stats strong,
+.fur-boutique-landing-hero__stats span { display: block; }
+.fur-boutique-landing-hero__stats strong { color: var(--fur-ink); font-size: 25px; font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+.fur-boutique-landing-hero__stats strong sup { top: -.34em; font-size: 12px; }
+.fur-boutique-landing-hero__stats strong i { color: var(--fur-jujube); font-size: 20px; }
+.fur-boutique-landing-hero__stats span { max-width: 108px; margin-top: 8px; color: var(--fur-ink-soft); font-size: 10px; font-weight: 700; line-height: 1.35; }
+
+.fur-boutique-landing-hero__paw-print {
+    position: absolute;
+    right: 24px;
+    bottom: 21px;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.07);
+    font-size: 121px;
+    line-height: 1;
+    transform: rotate(-16deg);
+}
+
+.fur-boutique-landing-hero__star {
+    position: absolute;
+    z-index: 2;
+    color: var(--fur-jujube);
+    line-height: 1;
+}
+.fur-boutique-landing-hero__star--one { top: 82px; right: 82px; font-size: 23px; }
+.fur-boutique-landing-hero__star--two { right: 31px; bottom: 166px; color: var(--fur-belltone); font-size: 16px; }
+
+.fur-boutique-landing-hero__side {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    padding: 12px 0 37px;
+}
+
+.fur-boutique-landing-hero__side::before {
+    position: absolute;
+    top: -34px;
+    right: -11%;
+    width: 222px;
+    height: 222px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.10);
+    content: '';
+}
+
+.fur-boutique-landing-note {
+    position: relative;
+    z-index: 1;
+    min-height: 184px;
+    overflow: hidden;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    border-radius: 25px;
+    background: rgba(74, 144, 217, 0.14);
+    padding: 30px 35px 25px;
+    box-shadow: 0 24px 46px -38px rgba(0, 0, 0, .74);
+}
+
+.fur-boutique-landing-note::after {
+    position: absolute;
+    width: 105px;
+    height: 105px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    content: '';
+}
+
+.fur-boutique-landing-note--first { margin-right: 10px; transform: rotate(-1.5deg); }
+.fur-boutique-landing-note--first::after { right: -39px; bottom: -54px; }
+.fur-boutique-landing-note--second { margin-left: 14px; background: rgba(201, 169, 110, 0.11); transform: rotate(1.5deg); }
+.fur-boutique-landing-note--second::after { top: -60px; right: 25px; }
+
+.fur-boutique-landing-note__icon {
+    position: absolute;
+    top: 25px;
+    right: 29px;
+    display: grid;
+    width: 39px;
+    height: 39px;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--fur-peppermint);
+    color: var(--fur-ink);
+    font-size: 16px;
+    transform: rotate(8deg);
+}
+
+.fur-boutique-landing-note--second .fur-boutique-landing-note__icon { background: rgba(201, 169, 110, 0.07); }
+.fur-boutique-landing-note__eyebrow { position: relative; z-index: 1; border-radius: 0; background: transparent; padding: 0; color: var(--fur-ink-soft); }
+.fur-boutique-landing-note h2 { position: relative; z-index: 1; max-width: 363px; margin: 12px 42px 0 0; color: var(--fur-ink); font-size: clamp(19px, 1.85vw, 27px); font-weight: 800; letter-spacing: -.05em; line-height: 1.18; }
+
+.fur-boutique-landing-note__dots { position: absolute; right: 23px; bottom: 23px; display: flex; gap: 5px; }
+.fur-boutique-landing-note__dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--fur-belltone); }
+.fur-boutique-landing-note__dots span:nth-child(2) { background: var(--fur-avocado); }.fur-boutique-landing-note__dots span:nth-child(3) { background: var(--fur-jujube); }
+.fur-boutique-landing-note__arrow { position: absolute; z-index: 2; right: 25px; bottom: 21px; display: grid; width: 39px; height: 39px; place-items: center; border-radius: 50%; background: var(--fur-jujube); color: var(--fur-frost); text-decoration: none; transition: background .2s ease, transform .2s ease; }
+.fur-boutique-landing-note__arrow:hover { background: var(--fur-ink); color: var(--fur-frost); transform: translateX(3px); }
+
+.fur-boutique-landing-hero__mini-card {
+    position: absolute;
+    z-index: 3;
+    right: -8px;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid rgba(74, 144, 217, 0.15);
+    border-radius: 14px;
+    background: rgba(74, 144, 217, 0.14);
+    padding: 10px 14px 10px 10px;
+    box-shadow: 0 14px 29px -22px rgba(0, 0, 0, .65);
+    transform: rotate(-3deg);
+}
+
+.fur-boutique-landing-hero__mini-card > i { display: grid; width: 31px; height: 31px; flex: 0 0 auto; place-items: center; border-radius: 10px; background: var(--fur-jujube); color: var(--fur-frost); font-size: 12px; }
+.fur-boutique-landing-hero__mini-card strong,
+.fur-boutique-landing-hero__mini-card small { display: block; }
+.fur-boutique-landing-hero__mini-card strong { color: var(--fur-ink); font-size: 10px; font-weight: 800; }.fur-boutique-landing-hero__mini-card small { margin-top: 2px; color: var(--fur-ink-soft); font-size: 9px; font-weight: 600; }
+
+.fur-boutique-landing-perks { padding: 0 0 42px; }
+.fur-boutique-landing-perks__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: hidden; border: 1px solid var(--fur-line); border-radius: 21px; background: rgba(201, 169, 110, 0.11); }
+.fur-boutique-landing-perks__grid > div { display: flex; min-height: 100px; align-items: center; gap: 13px; padding: 19px clamp(17px, 2.5vw, 32px); }.fur-boutique-landing-perks__grid > div + div { border-left: 1px solid var(--fur-line); }
+.fur-boutique-landing-perks__grid > div > span { display: grid; width: 40px; height: 40px; flex: 0 0 auto; place-items: center; border-radius: 13px; background: rgba(74, 144, 217, 0.14); color: var(--fur-ink); font-size: 16px; }.fur-boutique-landing-perks__grid p { margin: 0; }.fur-boutique-landing-perks__grid strong, .fur-boutique-landing-perks__grid small { display: block; }.fur-boutique-landing-perks__grid strong { color: var(--fur-ink); font-size: 13px; font-weight: 800; }.fur-boutique-landing-perks__grid small { margin-top: 4px; color: var(--fur-ink-soft); font-size: 11px; font-weight: 600; line-height: 1.38; }
+
+@media (max-width: 1000px) {
+    .fur-boutique-landing-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(300px, .66fr); gap: 25px; }
+    .fur-boutique-landing-hero__main { min-height: 510px; padding-inline: 36px; }
+    .fur-boutique-landing-note { min-height: 177px; padding: 25px 27px 22px; }
+    .fur-boutique-landing-note h2 { font-size: 20px; }
+    .fur-boutique-landing-hero__mini-card { right: 0; }
+}
+
+@media (max-width: 760px) {
+    .fur-boutique-landing-hero { padding-top: 24px; }
+    .fur-boutique-landing-hero__grid { grid-template-columns: 1fr; gap: 25px; }
+    .fur-boutique-landing-hero__main { min-height: 0; padding: 36px 25px; }
+    .fur-boutique-landing-hero h1 { font-size: clamp(39px, 11vw, 61px); }
+    .fur-boutique-landing-hero__copy > p:not(.fur-boutique-landing-hero__eyebrow) { font-size: 14px; }
+    .fur-boutique-landing-hero__stats { margin-top: 36px; }
+    .fur-boutique-landing-hero__side { padding: 3px 4px 43px; }
+    .fur-boutique-landing-note { min-height: 166px; padding: 25px 26px 22px; }
+    .fur-boutique-landing-note--first { margin-right: 6px; }.fur-boutique-landing-note--second { margin-left: 7px; }
+    .fur-boutique-landing-note h2 { max-width: 370px; font-size: clamp(20px, 5.3vw, 26px); }
+    .fur-boutique-landing-perks { padding-bottom: 23px; }
+    .fur-boutique-landing-perks__grid { grid-template-columns: 1fr; }
+    .fur-boutique-landing-perks__grid > div { min-height: 82px; }.fur-boutique-landing-perks__grid > div + div { border-top: 1px solid var(--fur-line); border-left: 0; }
+}
+
+@media (max-width: 430px) {
+    .fur-boutique-landing-hero__main { padding-inline: 21px; border-radius: 25px; }
+    .fur-boutique-landing-hero__actions { align-items: flex-start; flex-direction: column; gap: 16px; }
+    .fur-boutique-landing-hero__stats { gap: 7px; }.fur-boutique-landing-hero__stats strong { font-size: 21px; }.fur-boutique-landing-hero__stats span { font-size: 9px; }
+    .fur-boutique-landing-hero__paw-print { right: 9px; bottom: 13px; font-size: 94px; }
+    .fur-boutique-landing-note { padding: 23px 20px 21px; }.fur-boutique-landing-note h2 { margin-right: 39px; font-size: 19px; }.fur-boutique-landing-note__icon { top: 21px; right: 20px; }
+    .fur-boutique-landing-hero__mini-card { right: 2px; }.fur-boutique-landing-perks__grid > div { padding-inline: 18px; }
+}
+
+/* ==========================================================================
+   FurEver Boutique Enhanced Footer
+   ========================================================================== */
+
+.fur-boutique-footer {
+    position: relative;
+    margin-top: 48px;
+    border-top: 1px solid var(--fur-line);
+    background: linear-gradient(180deg, rgba(201, 169, 110, 0.10) 0%, rgba(74, 144, 217, 0.12) 40%, rgba(201, 169, 110, 0.09) 100%);
+    overflow: hidden;
+}
+
+.fur-boutique-footer > div {
+    min-height: 0;
+    align-items: initial;
+    justify-content: initial;
+}
+
+.fur-footer-perks {
+    border-bottom: 1px solid var(--fur-line);
+    background: rgba(201, 169, 110, 0.09);
+    padding: 24px 0;
+}
+
+.fur-footer-perks__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.fur-footer-perk {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.fur-footer-perk__icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    place-items: center;
+    border-radius: 14px;
+    background: rgba(201, 169, 110, 0.11);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: var(--fur-ink);
+    font-size: 18px;
+    box-shadow: 0 6px 14px -6px var(--fur-shadow);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.fur-footer-perk:hover .fur-footer-perk__icon {
+    transform: translateY(-2px) scale(1.05);
+    background: var(--fur-peppermint);
+    color: var(--fur-ink);
+}
+
+.fur-footer-perk__content strong {
+    display: block;
+    color: var(--fur-ink);
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: -.01em;
+}
+
+.fur-footer-perk__content small {
+    display: block;
+    margin-top: 2px;
+    color: var(--fur-ink-soft);
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.fur-footer-main {
+    position: relative;
+    padding: 56px 0 44px;
+}
+
+.fur-footer__watermark {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.06);
+    font-size: 140px;
+    line-height: 1;
+    user-select: none;
+}
+
+.fur-footer__watermark--left {
+    bottom: 20px;
+    left: -20px;
+    transform: rotate(25deg);
+}
+
+.fur-footer__watermark--right {
+    top: 20px;
+    right: -25px;
+    transform: rotate(-30deg);
+}
+
+.fur-footer__sparkle {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    color: rgba(201, 169, 110, 0.08);
+    font-size: 26px;
+    animation: furFooterTwinkle 3s ease-in-out infinite alternate;
+}
+
+.fur-footer__sparkle--1 {
+    top: 45px;
+    left: 45%;
+}
+
+.fur-footer__sparkle--2 {
+    bottom: 75px;
+    right: 28%;
+    animation-delay: 1.5s;
+}
+
+@keyframes furFooterTwinkle {
+    0% { transform: scale(.8) rotate(0deg); opacity: .4; }
+    100% { transform: scale(1.15) rotate(15deg); opacity: .85; }
+}
+
+.fur-footer-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.1fr 1.3fr;
+    gap: clamp(24px, 3.5vw, 42px);
+}
+
+.fur-footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none !important;
+}
+
+.fur-footer-brand__mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px -6px rgba(0, 0, 0, .32);
+}
+
+.fur-footer-brand__name {
+    display: block;
+    color: var(--fur-ink);
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1;
+}
+
+.fur-footer-brand__tagline {
+    display: block;
+    margin-top: 3px;
+    color: var(--fur-ink-soft);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.fur-footer-about {
+    margin: 16px 0 18px;
+    color: var(--fur-ink-soft);
+    font-size: 13px;
+    line-height: 1.65;
+    max-width: 320px;
+}
+
+.fur-footer-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.fur-footer-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(74, 144, 217, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--fur-ink);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.fur-footer-chip i {
+    color: var(--fur-jujube);
+    font-size: 10px;
+}
+
+.fur-footer-social__title {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--fur-ink);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.fur-footer-social__links {
+    display: flex;
+    gap: 9px;
+}
+
+.fur-footer-social__btn {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid var(--fur-line);
+    color: var(--fur-ink) !important;
+    font-size: 14px;
+    text-decoration: none !important;
+    transition: all .2s ease;
+}
+
+.fur-footer-social__btn:hover {
+    background: var(--fur-ink);
+    color: var(--fur-perfect-pear) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px -4px var(--fur-shadow);
+}
+
+.fur-footer-col__title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 20px;
+    color: var(--fur-ink);
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+.fur-footer-col__title i {
+    color: var(--fur-jujube);
+    font-size: 14px;
+}
+
+.fur-footer-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fur-footer-links li {
+    margin-bottom: 11px;
+}
+
+.fur-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fur-ink-soft) !important;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: color .2s ease, transform .2s ease;
+}
+
+.fur-footer-links a i {
+    color: var(--fur-belltone);
+    font-size: 11px;
+    transition: transform .2s ease;
+}
+
+.fur-footer-links a:hover {
+    color: var(--fur-ink) !important;
+    transform: translateX(4px);
+}
+
+.fur-footer-links a:hover i {
+    color: var(--fur-jujube);
+}
+
+.fur-footer-club-card {
+    position: relative;
+    padding: 24px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 16px 36px -20px rgba(0, 0, 0, .28);
+    backdrop-filter: blur(8px);
+}
+
+.fur-footer-club-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(201, 169, 110, 0.07);
+    color: var(--fur-ink);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.fur-footer-club-card__badge i {
+    color: var(--fur-jujube);
+}
+
+.fur-footer-club-card__title {
+    margin: 10px 0 6px;
+    color: var(--fur-ink);
+    font-family: "Instrument Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+.fur-footer-club-card__text {
+    margin: 0 0 16px;
+    color: var(--fur-ink-soft);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fur-footer-newsletter-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    background: #0E1017;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 4px 5px 4px 14px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.fur-footer-newsletter-input-wrap:focus-within {
+    border-color: var(--fur-jujube);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.07);
+}
+
+.fur-footer-newsletter-input-wrap > i {
+    color: var(--fur-belltone);
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.fur-footer-newsletter-input-wrap input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--fur-ink);
+    font-size: 12px;
+}
+
+.fur-footer-newsletter-input-wrap input::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+.fur-footer-newsletter-input-wrap button {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: var(--fur-ink);
+    color: #040407;
+    cursor: pointer;
+    font-size: 12px;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.fur-footer-newsletter-input-wrap button:hover {
+    background: var(--fur-jujube);
+    transform: scale(1.08);
+}
+
+.fur-footer-contact-mini {
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--fur-ink-soft);
+    font-weight: 600;
+}
+
+.fur-footer-contact-mini div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.fur-footer-contact-mini i {
+    color: var(--fur-belltone);
+    font-size: 12px;
+    width: 14px;
+}
+
+.fur-footer-bottom {
+    border-top: 1px solid var(--fur-line);
+    background: rgba(201, 169, 110, 0.11);
+    padding: 18px 0;
+}
+
+.fur-footer-bottom__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.fur-footer-bottom__copy {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    color: var(--fur-ink-soft);
+    font-size: 12px;
+}
+
+.fur-footer-bottom__copy strong {
+    color: var(--fur-ink);
+}
+
+.fur-footer-bottom__love {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fur-footer-bottom__love i {
+    color: #c44d5a;
+}
+
+.fur-footer-bottom__payments {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.fur-footer-pay-icon {
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    color: var(--fur-ink);
+    opacity: .75;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.fur-footer-pay-icon:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.fur-footer-bottom__secure {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--fur-ink);
+    font-size: 10.5px;
+    font-weight: 700;
+}
+
+.fur-footer-bottom__secure i {
+    color: var(--fur-jujube);
+}
+
+@media (max-width: 1024px) {
+    .fur-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+    .fur-footer-perks__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .fur-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .fur-footer-perks__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .fur-footer-main {
+        padding: 36px 0 28px;
+    }
+    .fur-footer-bottom__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .fur-footer-bottom__copy {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
+
+/* Minimal footer */
+.fur-boutique-footer {
+    margin-top: 64px;
+    background: #08080D;
+    overflow: visible;
+}
+
+.fur-boutique-footer > .fur-footer-minimal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 24px 0;
+}
+
+.fur-footer-brand {
+    gap: 9px;
+}
+
+.fur-footer-brand__mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.fur-footer-brand__name {
+    display: inline;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.fur-footer-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+}
+
+.fur-footer-links a {
+    display: inline;
+    color: var(--fur-ink-soft) !important;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.fur-footer-links a:hover {
+    color: var(--fur-ink) !important;
+    transform: none;
+}
+
+.fur-footer-copyright {
+    color: var(--fur-ink-soft);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .fur-boutique-footer > .fur-footer-minimal {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+        padding: 22px 0;
+    }
+
+    .fur-footer-links {
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+}
+
+/* Responsive Category Grid (4x2 for 8 categories) */
+.fur-boutique-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 31px;
+}
+
+@media (max-width: 1024px) {
+    .fur-boutique-category-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .fur-boutique-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 440px) {
+    .fur-boutique-category-grid {
+        grid-template-columns: 1fr;
+    }
+}

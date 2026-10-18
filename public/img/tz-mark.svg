@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <!-- Silver Metallic Gradient -->
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#E2E8F0"/>
+      <stop offset="55%" stop-color="#94A3B8"/>
+      <stop offset="85%" stop-color="#CBD5E1"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </linearGradient>
+
+    <!-- Deep Metallic Shadow -->
+    <linearGradient id="metalDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <!-- Precision Racing Red -->
+    <linearGradient id="racingRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="skewX(-16) translate(60, 20)">
+    <!-- Aerodynamic Speed Strakes (Front of T) -->
+    <polygon points="100,90 170,90 145,112 75,112" fill="url(#racingRed)"/>
+    <polygon points="125,124 185,124 165,144 105,144" fill="url(#racingRed)"/>
+    <polygon points="150,156 195,156 180,174 135,174" fill="url(#racingRed)"/>
+
+    <!-- Letter "T" -->
+    <!-- Horizontal Crossbar -->
+    <polygon points="180,90 410,90 380,132 205,132" fill="url(#silver)"/>
+    <!-- Vertical Down-bar (Beveled) -->
+    <polygon points="275,132 325,132 250,290 200,290" fill="url(#metalDark)"/>
+    <polygon points="285,132 325,132 260,270 220,270" fill="url(#silver)"/>
+
+    <!-- Letter "Z" -->
+    <!-- Upper Flange -->
+    <polygon points="340,146 510,146 480,186 385,186" fill="url(#silver)"/>
+    <!-- High-Velocity Diagonal Blade -->
+    <polygon points="490,176 430,186 315,290 375,290" fill="url(#racingRed)"/>
+    <polygon points="430,186 390,196 290,290 315,290" fill="url(#metalDark)"/>
+    <!-- Lower Base Runner -->
+    <polygon points="310,250 495,250 460,290 275,290" fill="url(#silver)"/>
+  </g>
+</svg>

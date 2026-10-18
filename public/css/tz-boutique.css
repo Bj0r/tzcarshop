@@ -1,0 +1,161 @@
+/* FurEver boutique storefront: warm, calm, and made for everyday pet care. */
+:root {
+    --fur-forest: #DFBA73;
+    --fur-forest-deep: #F3CA85;
+    --fur-sage: #60A5FA;
+    --fur-sage-light: rgba(96, 165, 250, 0.15);
+    --fur-cream-deep: #141722;
+    --fur-ink: #FFFFFF;
+    --fur-muted: rgba(255, 255, 255, 0.78);
+    --fur-clay: #60A5FA;
+    --fur-line: rgba(255, 255, 255, 0.12);
+}
+
+.fur-boutique { overflow: hidden; background: radial-gradient(circle at 7% 20%, rgba(201, 169, 110, .15), transparent 22rem), radial-gradient(circle at 93% 38%, rgba(74, 144, 217, .12), transparent 23rem), #040407; color: var(--fur-ink); }
+.fur-boutique .fur-navigation { border-bottom-color: rgba(255, 255, 255, 0.06); background: rgba(14, 16, 23, 0.93); box-shadow: 0 10px 26px -24px rgba(0, 0, 0, 0.5); }
+.fur-boutique .fur-navigation__inner { min-height: 76px; }.fur-boutique .fur-brand { color: var(--fur-ink); }.fur-boutique .fur-brand:hover { color: var(--fur-forest); }.fur-boutique .fur-brand__mark { width: 42px; height: 42px; border-radius: 50%; }.fur-boutique .fur-brand strong { font-size: 20px; font-weight: 800; letter-spacing: -.7px; }.fur-boutique .fur-brand small { color: var(--fur-muted); font-size: 10px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+.fur-boutique .fur-navigation__links { gap: 4px; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 999px; background: #0E1017; padding: 4px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }.fur-boutique .fur-navigation__links a { display: inline-flex; min-height: 34px; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: 999px; padding: 0 14px; color: rgba(255, 255, 255, 0.55); font-size: 13px; text-decoration: none; transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease; }.fur-boutique .fur-navigation__links a:hover { border-bottom: 0; background: rgba(255, 255, 255, 0.06); color: var(--fur-forest-deep); text-decoration: none; transform: translateY(-1px); }.fur-boutique .fur-navigation__links a.is-active { border-bottom: 0; background: var(--fur-forest); box-shadow: 0 5px 11px -8px rgba(0, 0, 0, 0.5); color: #040407; text-decoration: none; }.fur-boutique .fur-navigation__links a:focus-visible { outline: 3px solid rgba(201, 169, 110, 0.48); outline-offset: 2px; }
+.fur-boutique .fur-cart-link { border-color: rgba(255, 255, 255, 0.06); background: #0E1017; color: var(--fur-forest); }.fur-boutique .fur-cart-link:hover, .fur-boutique .fur-cart-link.is-active { border-color: var(--fur-forest); background: var(--fur-forest); color: #040407; }.fur-boutique .fur-cart-link span { background: var(--fur-forest); color: #040407; }.fur-boutique .fur-cart-link:hover span, .fur-boutique .fur-cart-link.is-active span { background: #040407; color: var(--fur-forest); }.fur-boutique .fur-orders-link { padding: 10px 7px; color: rgba(255, 255, 255, 0.55); }.fur-boutique .fur-orders-link:hover, .fur-boutique .fur-orders-link.is-active { color: var(--fur-forest); }
+.fur-boutique .fur-login-link { color: var(--fur-forest); }.fur-boutique .fur-login-link--primary { border-color: var(--fur-forest); background: var(--fur-forest); color: #040407; box-shadow: 0 8px 15px -12px rgba(0, 0, 0, 0.5); }.fur-boutique .fur-login-link--primary:hover { background: var(--fur-forest-deep); color: #040407; }.fur-boutique .fur-account-name { border-color: rgba(255, 255, 255, 0.06); background: #0E1017; color: var(--fur-forest); }.fur-boutique .fur-account-name i { color: var(--fur-forest); }.fur-boutique .fur-logout-form button { color: rgba(255, 255, 255, 0.55); }.fur-boutique .fur-logout-form button:hover { color: #c44d5a; }
+.fur-boutique .fur-message { margin: 20px 0 0; border-radius: 14px; box-shadow: none; }.fur-boutique .fur-message--success { background: rgba(45, 138, 94, 0.15); color: var(--fur-forest-deep); }
+
+.fur-boutique-hero { position: relative; padding: 60px 0 44px; }.fur-boutique-hero::before { content: ''; position: absolute; top: 0; right: -5%; width: 42%; height: 100%; border-radius: 0 0 0 45%; background: linear-gradient(140deg, rgba(201, 169, 110, 0.08), rgba(74, 144, 217, 0.08)); pointer-events: none; }.fur-boutique-hero__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); align-items: center; gap: clamp(32px, 6vw, 88px); }.fur-boutique-hero__copy { max-width: 680px; padding: 28px 0; }
+.fur-boutique-eyebrow { margin: 0; color: #C9A96E; font-size: 11px; font-weight: 800; letter-spacing: .15em; line-height: 1.4; text-transform: uppercase; }.fur-boutique-eyebrow i { margin-right: 6px; font-size: 12px; }.fur-boutique-hero h1 { max-width: 660px; margin: 18px 0 0; color: var(--fur-ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(43px, 5.2vw, 72px); font-weight: 700; letter-spacing: -.06em; line-height: .99; }.fur-boutique-hero__lede { max-width: 545px; margin: 24px 0 0; color: var(--fur-muted); font-size: 16px; line-height: 1.8; }.fur-boutique-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 31px; }
+.fur-boutique-button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--fur-forest); border-radius: 999px; background: var(--fur-forest); padding: 12px 21px; color: #040407; font-size: 13px; font-weight: 800; letter-spacing: .01em; text-decoration: none !important; box-shadow: 0 12px 21px -15px rgba(0, 0, 0, 0.5); transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }.fur-boutique-button:hover, .fur-boutique-button:focus { background: var(--fur-forest-deep); color: #040407; text-decoration: none !important; box-shadow: 0 15px 24px -15px rgba(0, 0, 0, 0.5); transform: translateY(-2px); }.fur-boutique-text-link, .fur-boutique-all-link { color: var(--fur-forest); font-size: 13px; font-weight: 800; text-decoration: none !important; }.fur-boutique-text-link:hover, .fur-boutique-text-link:focus, .fur-boutique-all-link:hover, .fur-boutique-all-link:focus { color: var(--fur-clay); text-decoration: none !important; }.fur-boutique-text-link i, .fur-boutique-all-link i { margin-left: 5px; }.fur-boutique-proof { display: flex; flex-wrap: wrap; gap: 11px 21px; margin-top: 38px; color: rgba(255, 255, 255, 0.55); font-size: 12px; font-weight: 700; }.fur-boutique-proof i { margin-right: 5px; color: #C9A96E; }
+
+.fur-boutique-hero__art { position: relative; min-height: 442px; isolation: isolate; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 52% 48% 44% 56% / 43% 48% 52% 57%; background: linear-gradient(140deg, #0E1017 0%, #141722 46%, #0E1017 100%); box-shadow: 0 31px 58px -37px rgba(0, 0, 0, 0.5); }.fur-boutique-hero__sun { position: absolute; top: 44px; right: 43px; width: 132px; height: 132px; border-radius: 50%; background: #C9A96E; opacity: .82; }.fur-boutique-hero__floor { position: absolute; right: -10%; bottom: -24%; left: -10%; z-index: -1; height: 48%; border-radius: 50%; background: rgba(201, 169, 110, 0.1); }.fur-boutique-hero__paw { position: absolute; top: 99px; left: 50%; display: grid; width: 178px; height: 178px; place-items: center; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 50%; background: rgba(14, 16, 23, 0.62); color: var(--fur-forest); box-shadow: inset 0 0 0 16px rgba(255,255,255,0.06), 0 23px 36px -25px rgba(0, 0, 0, 0.5); transform: translateX(-50%) rotate(-7deg); }.fur-boutique-hero__paw i { font-size: 77px; }.fur-boutique-hero__tag { position: absolute; top: 48px; left: 31px; border-radius: 999px; background: rgba(14, 16, 23, 0.88); padding: 10px 14px; color: var(--fur-forest); font-size: 11px; font-weight: 800; box-shadow: 0 12px 21px -17px rgba(0, 0, 0, 0.5); transform: rotate(-6deg); }.fur-boutique-hero__tag i { margin-right: 5px; color: #C9A96E; }.fur-boutique-hero__pet-card { position: absolute; right: 27px; bottom: 37px; display: grid; min-width: 191px; grid-template-columns: 37px 1fr; column-gap: 10px; align-items: center; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 18px; background: rgba(14, 16, 23, 0.9); padding: 11px 15px 12px 10px; box-shadow: 0 18px 30px -25px rgba(0, 0, 0, 0.5); transform: rotate(4deg); }.fur-boutique-hero__pet-icon { display: grid; width: 37px; height: 37px; grid-row: span 2; place-items: center; border-radius: 50%; background: rgba(201, 169, 110, 0.15); color: #C9A96E; }.fur-boutique-hero__pet-card strong { color: var(--fur-ink); font-size: 12px; line-height: 1.25; }.fur-boutique-hero__pet-card small { margin-top: 2px; color: var(--fur-muted); font-size: 10px; }.fur-boutique-hero__spark { position: absolute; z-index: 1; color: #C9A96E; font-size: 20px; }.fur-boutique-hero__spark--one { top: 54px; left: 50%; }.fur-boutique-hero__spark--two { right: 41px; bottom: 161px; font-size: 14px; }.fur-boutique-hero__spark--three { bottom: 74px; left: 51px; color: #4A90D9; font-size: 15px; }.fur-boutique-hero__leaf { position: absolute; width: 73px; height: 36px; border-radius: 73px 0; background: #C9A96E; opacity: .75; }.fur-boutique-hero__leaf--one { right: -7px; bottom: 111px; transform: rotate(37deg); }.fur-boutique-hero__leaf--two { bottom: 12px; left: 18px; width: 57px; height: 28px; background: #4A90D9; transform: rotate(-17deg); }
+
+.fur-boutique-category-section { padding: 57px 0 33px; }.fur-boutique-heading h2 { margin: 10px 0 0; color: var(--fur-ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(30px, 3.1vw, 43px); font-weight: 700; letter-spacing: -.045em; line-height: 1.08; }.fur-boutique-heading > p:not(.fur-boutique-eyebrow) { margin: 12px 0 0; color: var(--fur-muted); font-size: 15px; line-height: 1.7; }.fur-boutique-heading--center { max-width: 660px; margin: 0 auto; text-align: center; }.fur-boutique-category-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 31px; }.fur-boutique-category-card { display: flex; min-height: 166px; flex-direction: column; align-items: flex-start; justify-content: space-between; border: 1px solid var(--fur-line); border-radius: 20px; background: #0E1017; padding: 20px; color: var(--fur-ink); text-decoration: none; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }.fur-boutique-category-card:hover { border-color: rgba(255, 255, 255, 0.12); box-shadow: 0 17px 29px -22px rgba(0, 0, 0, 0.5); color: var(--fur-ink); transform: translateY(-4px); }.fur-boutique-category-card__icon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 15px; background: rgba(201, 169, 110, 0.15); color: var(--fur-forest); font-size: 19px; }.fur-boutique-category-card__content { margin-top: auto; }.fur-boutique-category-card strong, .fur-boutique-category-card small { display: block; }.fur-boutique-category-card strong { font-size: 16px; font-weight: 800; }.fur-boutique-category-card small { margin-top: 4px; color: var(--fur-muted); font-size: 11px; line-height: 1.45; }.fur-boutique-category-card > .fa { align-self: flex-end; margin-top: -15px; color: #C9A96E; font-size: 13px; }
+
+.fur-boutique-products-section { padding: 68px 0 42px; }.fur-boutique-heading--split { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }.fur-boutique-all-link { padding-bottom: 4px; white-space: nowrap; }.fur-boutique-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 19px; margin-top: 29px; }.fur-boutique-product-card { overflow: hidden; border: 1px solid var(--fur-line); border-radius: 20px; background: #0E1017; box-shadow: 0 12px 22px -23px rgba(0, 0, 0, 0.5); transition: box-shadow .2s ease, transform .2s ease; }.fur-boutique-product-card:hover { box-shadow: 0 21px 33px -23px rgba(0, 0, 0, 0.5); transform: translateY(-4px); }.fur-boutique-product-card__image { position: relative; display: grid; height: 207px; place-items: center; overflow: hidden; background: linear-gradient(142deg, #08080D, #0E1017); }.fur-boutique-product-card__image::after { content: ''; position: absolute; width: 138px; height: 138px; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 50%; background: rgba(14, 16, 23, 0.35); }.fur-boutique-product-card__image > i { position: relative; z-index: 1; color: var(--fur-forest); font-size: 55px; opacity: .8; }.fur-boutique-product-card__image img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }.fur-boutique-product-card:hover img { transform: scale(1.05); }.fur-boutique-product-card__category { position: absolute; z-index: 2; top: 13px; left: 13px; border-radius: 999px; background: rgba(14, 16, 23, 0.88); padding: 6px 9px; color: #C9A96E; font-size: 10px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }.fur-boutique-product-card__body { padding: 16px 16px 17px; }.fur-boutique-product-card__title-row { display: flex; align-items: start; justify-content: space-between; gap: 9px; }.fur-boutique-product-card h2, .fur-boutique-product-card h3 { margin: 0; color: var(--fur-ink); font-size: 15px; font-weight: 800; letter-spacing: -.025em; line-height: 1.35; }.fur-boutique-product-card__title-row strong { color: var(--fur-forest); font-size: 13px; font-weight: 800; white-space: nowrap; }.fur-boutique-product-card p { min-height: 37px; margin: 8px 0 0; color: var(--fur-muted); font-size: 11px; line-height: 1.55; }.fur-boutique-product-card__footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; }.fur-boutique-stock { color: #2d8a5e; font-size: 10px; font-weight: 800; }.fur-boutique-stock::before { content: '•'; margin-right: 3px; font-size: 16px; line-height: 0; vertical-align: -1px; }.fur-boutique-stock--out { color: #c44d5a; }.fur-boutique-add-button { display: inline-flex; min-height: 31px; align-items: center; gap: 6px; border: 0; border-radius: 999px; background: var(--fur-forest); padding: 7px 10px; color: #040407; font: inherit; font-size: 11px; font-weight: 800; cursor: pointer; transition: background .2s ease, transform .2s ease; }.fur-boutique-add-button:hover:not(:disabled) { background: var(--fur-forest-deep); transform: translateY(-1px); }.fur-boutique-add-button:disabled { cursor: not-allowed; opacity: .42; }
+
+.fur-boutique-feature { position: relative; display: grid; grid-template-columns: minmax(0, .98fr) minmax(280px, .6fr); min-height: 322px; align-items: center; overflow: hidden; border-radius: 27px; background: linear-gradient(118deg, #0E1017, #141722); padding: 43px 9%; color: #040407; }.fur-boutique-feature::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 83% 43%, rgba(201, 169, 110, 0.15), transparent 18rem); }.fur-boutique-feature__copy, .fur-boutique-feature__art { position: relative; z-index: 1; }.fur-boutique-feature .fur-boutique-eyebrow { color: rgba(255, 255, 255, 0.55); }.fur-boutique-feature h2 { max-width: 530px; margin: 10px 0 0; color: #040407; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(30px, 3.3vw, 47px); font-weight: 700; letter-spacing: -.045em; line-height: 1.07; }.fur-boutique-feature__copy > p:not(.fur-boutique-eyebrow) { max-width: 525px; margin: 15px 0 0; color: rgba(255,255,255,0.55); font-size: 14px; line-height: 1.75; }.fur-boutique-button--light { margin-top: 24px; border-color: #040407; background: #040407; color: var(--fur-forest); }.fur-boutique-button--light:hover { background: rgba(255, 255, 255, 0.06); color: var(--fur-forest-deep); }.fur-boutique-feature__art { display: grid; min-height: 235px; place-items: center; }.fur-boutique-feature__moon { position: absolute; width: 208px; height: 208px; border-radius: 50%; background: #C9A96E; opacity: .88; }.fur-boutique-feature__art > i { position: relative; color: var(--fur-forest); font-size: 91px; }.fur-boutique-feature__ball { position: absolute; right: 13%; bottom: 14px; width: 42px; height: 42px; border-radius: 50%; background: #4A90D9; box-shadow: inset -8px -6px 0 rgba(74, 144, 217, 0.13); }.fur-boutique-feature__star { position: absolute; top: 24px; right: 15%; color: #e2c184; font-size: 24px; }
+
+.fur-boutique-promise { padding: 77px 0; }.fur-boutique-promise > .fur-boutique-heading { max-width: 575px; }.fur-boutique-promise__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 36px; }.fur-boutique-promise__grid article { padding-right: 18px; }.fur-boutique-promise__grid article > span { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 50%; background: rgba(201, 169, 110, 0.15); color: var(--fur-forest); font-size: 16px; }.fur-boutique-promise__grid h3 { margin: 15px 0 0; color: var(--fur-ink); font-size: 16px; font-weight: 800; }.fur-boutique-promise__grid p { margin: 7px 0 0; color: var(--fur-muted); font-size: 13px; line-height: 1.7; }.fur-boutique-footer { border-top: 1px solid var(--fur-line); background: #08080D; }.fur-boutique-footer > div { display: flex; min-height: 82px; align-items: center; justify-content: space-between; gap: 24px; }.fur-boutique-footer a { color: rgba(255, 255, 255, 0.55); font-size: 12px; font-weight: 700; text-decoration: none; }.fur-boutique-footer a:hover { color: var(--fur-forest); }.fur-boutique-footer__brand { color: var(--fur-forest) !important; font-family: Georgia, 'Times New Roman', serif; font-size: 15px !important; }.fur-boutique-footer__brand span { color: #C9A96E; }.fur-boutique-footer > div > div { display: flex; flex-wrap: wrap; gap: 19px; }
+
+.fur-boutique-shop { padding-top: 42px; padding-bottom: 70px; }.fur-boutique-shop__intro { position: relative; display: flex; min-height: 240px; align-items: center; justify-content: space-between; overflow: hidden; border-radius: 25px; background: linear-gradient(112deg, #08080D, #0E1017); padding: 37px clamp(25px, 6vw, 76px); }.fur-boutique-shop__intro::after { content: ''; position: absolute; top: -92px; right: 8%; width: 286px; height: 286px; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 50%; background: rgba(14, 16, 23, 0.35); }.fur-boutique-shop__intro > div:first-child { position: relative; z-index: 1; }.fur-boutique-shop__intro h1 { max-width: 665px; margin: 12px 0 0; color: var(--fur-ink); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(37px, 4.4vw, 56px); font-weight: 700; letter-spacing: -.05em; line-height: 1.02; }.fur-boutique-shop__intro p:not(.fur-boutique-eyebrow) { max-width: 520px; margin: 15px 0 0; color: var(--fur-muted); font-size: 14px; line-height: 1.7; }.fur-boutique-shop__intro-mark { position: relative; z-index: 1; display: grid; width: 109px; height: 109px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: rgba(14, 16, 23, 0.73); color: var(--fur-forest); font-size: 48px; box-shadow: 0 19px 35px -27px rgba(0, 0, 0, 0.5); transform: rotate(-8deg); }.fur-boutique-filter-card { margin-top: 22px; border: 1px solid var(--fur-line); border-radius: 19px; background: #0E1017; padding: 17px; }.fur-boutique-filter-form { display: grid; grid-template-columns: 1.5fr 1fr 1fr auto; gap: 12px; align-items: end; }.fur-boutique-filter-form label { margin: 0; color: rgba(255, 255, 255, 0.85); font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }.fur-boutique-filter-form select, .fur-boutique-search-field input { width: 100%; height: 42px; margin-top: 5px; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 10px; outline: 0; background: #040407; padding: 0 12px; color: var(--fur-ink); font: inherit; font-size: 12px; font-weight: 600; text-transform: none; }.fur-boutique-filter-form select:focus, .fur-boutique-search-field input:focus { border-color: #DFBA73; box-shadow: 0 0 0 3px rgba(223, 186, 115, 0.2); }.fur-boutique-search-field { position: relative; display: block; }.fur-boutique-search-field i { position: absolute; z-index: 1; bottom: 14px; left: 12px; color: rgba(255, 255, 255, 0.65); font-size: 12px; }.fur-boutique-search-field input { padding-left: 33px; }.fur-boutique-filter-form button { height: 42px; border: 0; border-radius: 999px; background: var(--fur-forest); padding: 0 17px; color: #040407; font: inherit; font-size: 12px; font-weight: 800; white-space: nowrap; cursor: pointer; }.fur-boutique-filter-form button:hover { background: var(--fur-forest-deep); }.fur-boutique-filter-form button i { margin-left: 5px; }.fur-boutique-filter-reset { display: inline-block; margin: 12px 4px 0; color: rgba(255, 255, 255, 0.78); font-size: 11px; font-weight: 700; text-decoration: none; }.fur-boutique-filter-reset:hover { color: #F87171; }.fur-boutique-filter-reset i { margin-right: 4px; }.fur-boutique-shop__results { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 29px; color: var(--fur-muted); font-size: 12px; }.fur-boutique-shop__results p { margin: 0; }.fur-boutique-shop__results p strong, .fur-boutique-shop__results > span strong { color: var(--fur-forest); }.fur-boutique-shop__results > span { border-radius: 999px; background: rgba(223, 186, 115, 0.18); padding: 6px 10px; color: #DFBA73; font-size: 10px; }.fur-boutique-product-grid--catalog { margin-top: 15px; }.fur-boutique-product-grid--catalog .fur-boutique-product-card__image { height: 224px; }.fur-boutique-product-grid--catalog .fur-boutique-product-card h2 { font-size: 16px; }.fur-boutique-product-grid--catalog .fur-boutique-product-card p { min-height: 51px; }.fur-boutique-empty { grid-column: 1 / -1; border: 1px dashed rgba(255, 255, 255, 0.14); border-radius: 23px; background: #0E1017; padding: 60px 24px; text-align: center; }.fur-boutique-empty > span { display: grid; width: 51px; height: 51px; margin: 0 auto; place-items: center; border-radius: 50%; background: rgba(223, 186, 115, 0.18); color: var(--fur-forest); font-size: 21px; }.fur-boutique-empty h2 { margin: 16px 0 0; color: var(--fur-ink); font-family: Georgia, 'Times New Roman', serif; font-size: 28px; }.fur-boutique-empty p { margin: 9px 0 20px; color: var(--fur-muted); font-size: 13px; }.fur-boutique-empty .fur-boutique-button { min-height: 42px; font-size: 12px; }
+
+@media (max-width: 960px) { .fur-boutique-hero__grid { grid-template-columns: 1fr .78fr; gap: 27px; }.fur-boutique-hero h1 { font-size: clamp(42px, 6vw, 61px); }.fur-boutique-hero__art { min-height: 389px; }.fur-boutique-product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }.fur-boutique-category-grid { grid-template-columns: repeat(2, 1fr); }.fur-boutique-filter-form { grid-template-columns: 1fr 1fr; }.fur-boutique-filter-form button { width: 100%; }.fur-boutique-feature { padding-inline: 7%; }.fur-boutique-feature__art { min-height: 190px; } }
+@media (max-width: 760px) { .fur-boutique-hero { padding-top: 25px; }.fur-boutique-hero::before { width: 80%; height: 39%; }.fur-boutique-hero__grid { grid-template-columns: 1fr; }.fur-boutique-hero__copy { padding: 20px 0 0; }.fur-boutique-hero h1 { font-size: clamp(40px, 12vw, 58px); }.fur-boutique-hero__art { min-height: 355px; }.fur-boutique-category-section { padding-top: 44px; }.fur-boutique-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }.fur-boutique-product-card__image { height: 170px; }.fur-boutique-product-card__body { padding: 13px; }.fur-boutique-product-card__footer { align-items: flex-end; }.fur-boutique-product-card__footer .fur-boutique-stock { max-width: 64px; line-height: 1.3; }.fur-boutique-add-button span { display: none; }.fur-boutique-add-button { width: 31px; justify-content: center; padding: 0; }.fur-boutique-heading--split { align-items: flex-start; flex-direction: column; gap: 13px; }.fur-boutique-feature { grid-template-columns: 1fr; padding: 40px 28px 0; }.fur-boutique-feature__art { min-height: 193px; }.fur-boutique-feature__moon { width: 170px; height: 170px; }.fur-boutique-feature__art > i { font-size: 70px; }.fur-boutique-promise { padding: 57px 0; }.fur-boutique-promise__grid { grid-template-columns: 1fr; gap: 25px; }.fur-boutique-promise__grid article { padding-right: 0; }.fur-boutique-footer > div { min-height: 111px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 12px; }.fur-boutique-shop { padding-top: 24px; }.fur-boutique-shop__intro { min-height: 290px; align-items: flex-start; padding: 31px 27px; }.fur-boutique-shop__intro-mark { position: absolute; right: 28px; bottom: 26px; width: 77px; height: 77px; font-size: 33px; }.fur-boutique-shop__intro::after { top: auto; right: -49px; bottom: -86px; width: 226px; height: 226px; }.fur-boutique-filter-form { grid-template-columns: 1fr; }.fur-boutique-filter-card { padding: 14px; }.fur-boutique-product-grid--catalog .fur-boutique-product-card__image { height: 181px; } }
+@media (max-width: 430px) { .fur-boutique .fur-brand small { display: none; }.fur-boutique-hero__actions { gap: 15px; }.fur-boutique-proof { align-items: flex-start; flex-direction: column; gap: 8px; margin-top: 27px; }.fur-boutique-category-grid { grid-template-columns: 1fr; }.fur-boutique-category-card { min-height: 123px; }.fur-boutique-category-card__icon { width: 37px; height: 37px; }.fur-boutique-heading h2 { font-size: 31px; }.fur-boutique-product-card__image { height: 145px; }.fur-boutique-product-card__image > i { font-size: 42px; }.fur-boutique-product-card__category { top: 8px; left: 8px; padding: 5px 7px; font-size: 8px; }.fur-boutique-product-card h2, .fur-boutique-product-card h3 { font-size: 13px; }.fur-boutique-product-card__title-row strong { font-size: 11px; }.fur-boutique-product-card p { min-height: 51px; font-size: 10px; }.fur-boutique-products-section { padding-top: 51px; }.fur-boutique-shop__results { align-items: flex-start; flex-direction: column; }.fur-boutique-product-grid--catalog .fur-boutique-product-card__image { height: 155px; } }
+
+/* Product card refinements: keep the product image clear and controls easy to scan. */
+.fur-boutique-product-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    border-color: rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    box-shadow: 0 9px 21px -22px rgba(0, 0, 0, 0.5);
+}
+
+.fur-boutique-product-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 31px -22px rgba(0, 0, 0, 0.5);
+}
+
+.fur-boutique-product-card__image {
+    background: #0E1017;
+}
+
+/* Removes the translucent circular overlay so product photos remain unobstructed. */
+.fur-boutique-product-card__image::after {
+    content: none;
+}
+
+.fur-boutique-product-card__image img {
+    display: block;
+    object-position: center;
+}
+
+.fur-boutique-product-card__image > i {
+    color: #C9A96E;
+}
+
+.fur-boutique-product-card__category {
+    position: static;
+    z-index: auto;
+    align-self: flex-start;
+    margin-bottom: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #0E1017;
+    box-shadow: 0 3px 9px -7px rgba(0, 0, 0, 0.5);
+}
+
+.fur-boutique-product-card__body {
+    display: flex;
+    min-height: 156px;
+    flex: 1;
+    flex-direction: column;
+    padding: 17px;
+}
+
+.fur-boutique-product-card h2,
+.fur-boutique-product-card h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.fur-boutique-product-card__title-row strong {
+    padding: 4px 7px;
+    border-radius: 7px;
+    background: rgba(201, 169, 110, 0.15);
+    font-size: 12px;
+    line-height: 1.15;
+}
+
+.fur-boutique-product-card p {
+    display: -webkit-box;
+    min-height: 0;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.fur-boutique-product-card__footer {
+    margin-top: auto;
+    padding-top: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fur-boutique-stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #2d8a5e;
+}
+
+.fur-boutique-stock::before {
+    width: 6px;
+    height: 6px;
+    margin: 0;
+    border-radius: 50%;
+    background: currentColor;
+    content: '';
+}
+
+.fur-boutique-add-button {
+    min-height: 36px;
+    padding: 8px 12px;
+}
+
+.fur-boutique-add-button:focus-visible,
+.fur-boutique-filter-form button:focus-visible,
+.fur-boutique-filter-reset:focus-visible,
+.fur-boutique-all-link:focus-visible {
+    outline: 3px solid rgba(201, 169, 110, 0.48);
+    outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+    .fur-boutique-product-card__body { min-height: 164px; }
+    .fur-boutique-add-button { width: 36px; min-height: 36px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fur-boutique-product-card,
+    .fur-boutique-product-card__image img,
+    .fur-boutique-add-button { transition: none; }
+}
