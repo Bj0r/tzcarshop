@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\BookQueryController;
+use App\Http\Controllers\BookQueryControllerStock_Limit;
 use App\Http\Controllers\TzAuthController;
 use App\Http\Controllers\TzController;
 
@@ -233,3 +234,4 @@ Route::get('/story', function () {
 });
 
 Route::get('/book-query-comparison', [BookQueryController::class, 'index']);
+Route::get('/book-query-comparison-stock-limit', [BookQueryControllerStock_Limit::class, 'index']);
