@@ -26,3 +26,8 @@ Thumbs.db
 # local database file and generated seeder covers
 /book
 /public/_uploads/seed-book-*.svg
+
+# Ignore media uploads or temporary assets
+/public/storage/
+/storage/app/public/
+files/*.png
