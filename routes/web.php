@@ -80,9 +80,6 @@ Route::get('/p3/login', [TzAuthController::class, 'create'])
 Route::get('/p3/register', [TzAuthController::class, 'createRegistration'])
     ->name('furever.register');
 
-Route::post('/p3/reserve', [TzController::class, 'reserve'])
-    ->name('furever.reserve');
-
 /*
 |--------------------------------------------------------------------------
 | PRODUCT MANAGEMENT

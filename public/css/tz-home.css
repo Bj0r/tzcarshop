@@ -309,3 +309,403 @@
         animation-iteration-count: 1 !important;
     }
 }
+/* ==========================================================================
+   SCENE 1 — Scroll-driven hero film (resources/views/pages/tz.blade.php)
+   The section is tall; the stage stays pinned while public/js/hero-scrub.js
+   draws the video frame that matches the scroll position.
+   ========================================================================== */
+.hero-scrub {
+    height: 320vh;
+}
+
+.hero-scrub .hero-scrub__stage {
+    background: #050506;
+    /* Replaces the default scene fade; set by hero-scrub.js after the car is revealed. */
+    opacity: var(--hero-fade, 1);
+}
+
+.hero-scrub__poster,
+.hero-scrub__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.hero-scrub__canvas {
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+.hero-scrub.is-ready .hero-scrub__canvas {
+    opacity: 1;
+}
+
+/* Darkens the left and bottom edges so the text stays readable over the film. */
+.hero-scrub__shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(5, 5, 6, .85) 0%, rgba(5, 5, 6, .35) 38%, rgba(5, 5, 6, 0) 62%),
+        linear-gradient(0deg, rgba(5, 5, 6, .9) 0%, rgba(5, 5, 6, 0) 35%);
+}
+
+.hero-scrub__intro,
+.hero-scrub__outro {
+    will-change: opacity, transform;
+}
+
+/* The final frame leaves the top-left dark and empty, so the car details sit there. */
+.hero-scrub__outro {
+    justify-content: flex-start;
+    padding-top: 130px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-scrub__outro.is-visible {
+    pointer-events: auto;
+}
+
+.hero-scrub__name {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+}
+
+/* Price and button on one row, so the block stays above the car. */
+.hero-scrub__buy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 28px;
+    margin-top: 18px;
+}
+
+.hero-scrub__price {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--accent-gold);
+}
+
+.hero-scrub__cta {
+    padding: 12px 26px;
+}
+
+.hero-scrub__progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    height: 2px;
+    background: rgba(255, 255, 255, .08);
+}
+
+.hero-scrub__progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+    .hero-scrub {
+        height: 260vh;
+    }
+
+    .hero-scrub__outro {
+        padding-top: 150px;
+    }
+}
+
+/* No scroll film for visitors who ask for less motion: one still image and all text. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-scrub {
+        height: 100vh;
+    }
+
+    .hero-scrub__canvas,
+    .hero-scrub__progress {
+        display: none;
+    }
+
+    .hero-scrub__outro {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* ==========================================================================
+   LANDING SECTIONS after the hero (search, featured cars, why us, steps, CTA)
+   ========================================================================== */
+.tz-landing {
+    position: relative;
+    z-index: 1;
+    background: var(--scene-black, #040407);
+    color: #fff;
+}
+
+.tz-landing__section {
+    padding: 96px 0;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.tz-landing__shell {
+    width: min(1180px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+.tz-landing__eyebrow {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+}
+
+.tz-landing__title {
+    margin: 0 0 28px;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.02em;
+}
+
+.tz-landing__muted {
+    color: var(--dim-white);
+}
+
+.tz-landing__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+}
+
+.tz-landing__link:hover {
+    color: #fff;
+}
+
+/* Search */
+.tz-landing__search {
+    text-align: center;
+}
+
+.tz-landing__search-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 8px 8px 8px 20px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    background: rgba(255, 255, 255, .04);
+}
+
+.tz-landing__search-form i {
+    color: var(--whisper);
+}
+
+.tz-landing__search-form input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-size: 15px;
+}
+
+.tz-landing__search-form .cta-cinema-primary {
+    padding: 12px 24px;
+}
+
+/* Featured cars */
+.tz-landing__heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-bottom: 8px;
+}
+
+.tz-landing__cars {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tz-landing-car {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, .1);
+    background: rgba(255, 255, 255, .03);
+    transition: border-color .25s ease, transform .25s ease;
+}
+
+.tz-landing-car:hover {
+    border-color: rgba(223, 186, 115, .5);
+    transform: translateY(-3px);
+}
+
+.tz-landing-car__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: #0b0b10;
+    color: rgba(255, 255, 255, .15);
+    font-size: 40px;
+}
+
+.tz-landing-car__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tz-landing-car__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+}
+
+.tz-landing-car__body h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.tz-landing-car__body p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--dim-white);
+}
+
+.tz-landing-car__body strong {
+    margin: 6px 0 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.tz-landing-car__body .tz-landing__link {
+    margin-top: auto;
+}
+
+/* Why us + steps */
+.tz-landing__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+}
+
+.tz-landing__list,
+.tz-landing__steps {
+    display: grid;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tz-landing__list li,
+.tz-landing__steps li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.tz-landing__list i,
+.tz-landing__steps li > span {
+    display: inline-flex;
+    flex: 0 0 40px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(223, 186, 115, .4);
+    color: var(--accent-gold);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.tz-landing__list strong,
+.tz-landing__steps strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+.tz-landing__list div span,
+.tz-landing__steps div span {
+    font-size: 14px;
+    color: var(--dim-white);
+}
+
+/* Closing CTA */
+.tz-landing__cta {
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(223, 186, 115, .12) 0%, transparent 65%);
+}
+
+.tz-landing__cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+@media (max-width: 960px) {
+    .tz-landing__cars {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tz-landing__split {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 560px) {
+    .tz-landing__section {
+        padding: 64px 0;
+    }
+
+    .tz-landing__cars {
+        gap: 12px;
+    }
+
+    .tz-landing-car__body {
+        padding: 12px;
+    }
+
+    .tz-landing-car__body h3 {
+        font-size: 14px;
+    }
+
+    .tz-landing-car__body strong {
+        font-size: 14px;
+    }
+
+    .tz-landing__search-form .cta-cinema-primary {
+        padding: 12px 16px;
+    }
+}

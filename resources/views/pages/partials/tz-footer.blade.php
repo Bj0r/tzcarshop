@@ -6,7 +6,7 @@
         </a>
 
         <nav class="cinematic-footer-links" aria-label="Footer navigation">
-            <a href="{{ route('furever') }}">Exhibition</a>
+            <a href="{{ route('furever') }}">Home</a>
             <a href="{{ route('furever.shop') }}">Collection</a>
             @auth
                 @if(auth()->user()->isFureverAdmin())

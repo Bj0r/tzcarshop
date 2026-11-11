@@ -207,7 +207,7 @@ class TzOrderManagementTest extends TestCase
             ->assertSee('Why Choose TZ Carshop')
             ->assertSee('A Simple Process')
             ->assertSee('Your Next Adventure Is Waiting')
-            ->assertSee('class="tz-home-benefits__vehicle"', false)
+            ->assertSee('class="tz-landing-car"', false)
             ->assertSee('Toyota Camry')
             ->assertSee('Attitude Black Mica');
     }

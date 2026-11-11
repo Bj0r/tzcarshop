@@ -8,7 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
 
 class TzController extends Controller
 {
@@ -613,97 +612,5 @@ class TzController extends Controller
     {
         // Cart items, quantity updates, and checkout use /api/tz/cart and /api/tz/orders.
         return view('pages.tz-cart');
-    }
-
-    /*
-    |--------------------------------------------------------------------------
-    | BESPOKE VEHICLE RESERVATION (CINEMATIC EXPERIENCE)
-    |--------------------------------------------------------------------------
-    */
-
-    public function reserve(Request $request)
-    {
-        $request->validate([
-            'product_id' => ['required', 'exists:products,id'],
-            'finish' => ['nullable', 'string', 'max:100'],
-            'guest_name' => ['nullable', 'string', 'max:255'],
-            'guest_email' => ['nullable', 'email', 'max:255'],
-            'guest_password' => ['nullable', 'string', 'min:6'],
-        ]);
-
-        $user = auth()->user();
-
-        // If guest reservation, handle customer authentication effortlessly
-        if (! $user) {
-            if ($request->filled('guest_email')) {
-                $email = $request->guest_email;
-                $user = User::firstOrCreate(
-                    ['email' => $email],
-                    [
-                        'name' => $request->input('guest_name', 'Bespoke Client'),
-                        'username' => strtolower(explode('@', $email)[0]).'_'.rand(100, 999),
-                        'password' => bcrypt($request->input('guest_password', 'password123')),
-                        'role' => 'customer',
-                        'status' => 'active',
-                    ]
-                );
-
-                auth()->login($user);
-            } else {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Please provide your name and email address to reserve this vehicle.',
-                ], 422);
-            }
-        }
-
-        $orderData = DB::transaction(function () use ($request, $user) {
-            $product = Product::query()
-                ->lockForUpdate()
-                ->findOrFail($request->product_id);
-
-            if ($product->stock <= 0) {
-                throw ValidationException::withMessages([
-                    'product_id' => 'This vehicle is currently allocated or out of stock.',
-                ]);
-            }
-
-            $order = Order::create([
-                'user_id' => $user->id,
-                'total' => round((float) $product->price, 2),
-                'status' => Order::STATUS_PENDING,
-            ]);
-
-            $finishSuffix = $request->filled('finish') ? ' ('.$request->finish.')' : '';
-
-            $order->items()->create([
-                'product_id' => $product->id,
-                'product_name' => $product->name.$finishSuffix,
-                'price' => $product->price,
-                'quantity' => 1,
-            ]);
-
-            $product->decrement('stock', 1);
-
-            return [
-                'order' => $order,
-                'product' => $product,
-            ];
-        });
-
-        if ($request->wantsJson() || $request->ajax()) {
-            return response()->json([
-                'success' => true,
-                'order_id' => $orderData['order']->id,
-                'product_name' => $orderData['product']->name.($request->filled('finish') ? ' — '.$request->finish : ''),
-                'total' => number_format($orderData['order']->total, 2),
-                'message' => 'Commission confirmed. Order #'.$orderData['order']->id.' has been secured.',
-                'redirect' => route('furever.customer-orders'),
-            ]);
-        }
-
-        return redirect()
-            ->route('furever.customer-orders')
-            ->with('success', 'Commission confirmed! Order #'.$orderData['order']->id.' has been secured.');
     }
 }

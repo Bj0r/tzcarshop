@@ -3,11 +3,11 @@
 <nav class="cinematic-nav cinematic-subpage-nav" aria-label="TZ ATELIER Navigation">
     <a href="{{ route('furever') }}" class="nav-logo" aria-label="TZ ATELIER">
         <img src="{{ asset('img/tz-mark.svg') }}" alt="TZ Mark" class="tz-nav-logo-mark">
-        <strong>TZ</strong><span style="letter-spacing:0.14em; font-weight:800; font-size:15px;"> ATELIER</span>
+        <strong>TZ</strong><span class="nav-hide-mobile" style="letter-spacing:0.14em; font-weight:800; font-size:15px;"> ATELIER</span>
     </a>
 
     <div class="nav-links">
-        <a href="{{ route('furever') }}" class="{{ request()->routeIs('furever') ? 'active' : '' }}">Exhibition</a>
+        <a href="{{ route('furever') }}" class="{{ request()->routeIs('furever') ? 'active' : '' }}">Home</a>
         <a href="{{ route('furever.shop') }}" class="{{ request()->routeIs('furever.shop*') ? 'active' : '' }}">Collection</a>
         @auth
             @if(auth()->user()->isFureverAdmin())
@@ -24,14 +24,14 @@
     <div class="nav-actions">
         <a href="{{ route('furever.shop') }}" class="nav-badge-link" title="Vehicle Inventory">
             <i class="fa fa-th-large" aria-hidden="true"></i>
-            <span>Inventory</span>
+            <span class="nav-hide-mobile">Inventory</span>
         </a>
 
         @auth
             @if(auth()->user()->isFureverAdmin())
                 <a href="{{ route('furever.dashboard') }}" class="nav-badge-link">Back to Dashboard</a>
             @else
-                <a href="{{ route('furever.customer-orders') }}" class="nav-badge-link">Commissions</a>
+                <a href="{{ route('furever.customer-orders') }}" class="nav-badge-link nav-hide-mobile">Commissions</a>
                 <a href="{{ route('furever.cart') }}" class="nav-badge-link" aria-label="View Cart">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                     <span class="nav-cart-count">{{ $navigationCartCount }}</span>
@@ -43,7 +43,7 @@
             </form>
         @else
             <a href="{{ route('furever.login') }}" class="nav-badge-link">Sign in</a>
-            <a href="{{ route('furever.register') }}" class="nav-cta-button" style="text-decoration:none;">Create account</a>
+            <a href="{{ route('furever.register') }}" class="nav-cta-button nav-hide-mobile" style="text-decoration:none;">Create account</a>
         @endauth
     </div>
 </nav>
