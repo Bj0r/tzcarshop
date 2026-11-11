@@ -30,30 +30,31 @@
                     <p>Set up your TZ Carshop access in a few steps.</p>
                 </header>
 
-                <form action="{{ route('furever.register.store') }}" method="POST" class="tz-auth__form">
+                <form action="{{ route('api.tz.register') }}" method="POST" class="tz-auth__form" data-api-form>
                     @csrf
+                    <div class="tz-auth__message is-error" role="alert" data-api-error="general" hidden></div>
                     <div class="tz-auth__field">
                         <label for="name">Full name</label>
-                        <div class="tz-auth__input"><i class="fa fa-id-card-o" aria-hidden="true"></i><input id="name" type="text" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Enter your full name" required autofocus></div>
-                        @error('name')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                        <div class="tz-auth__input"><i class="fa fa-id-card-o" aria-hidden="true"></i><input id="name" type="text" name="name" autocomplete="name" placeholder="Enter your full name" required autofocus></div>
+                        <p class="tz-auth__error" data-api-error="name" hidden></p>
                     </div>
                     <div class="tz-auth__form-row">
                         <div class="tz-auth__field">
                             <label for="username">Username</label>
-                            <div class="tz-auth__input"><i class="fa fa-user-o" aria-hidden="true"></i><input id="username" type="text" name="username" value="{{ old('username') }}" autocomplete="username" placeholder="Choose a username" required></div>
-                            @error('username')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                            <div class="tz-auth__input"><i class="fa fa-user-o" aria-hidden="true"></i><input id="username" type="text" name="username" autocomplete="username" placeholder="Choose a username" required></div>
+                            <p class="tz-auth__error" data-api-error="username" hidden></p>
                         </div>
                         <div class="tz-auth__field">
                             <label for="email">Email address</label>
-                            <div class="tz-auth__input"><i class="fa fa-envelope-o" aria-hidden="true"></i><input id="email" type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="you@example.com" required></div>
-                            @error('email')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                            <div class="tz-auth__input"><i class="fa fa-envelope-o" aria-hidden="true"></i><input id="email" type="email" name="email" autocomplete="email" placeholder="you@example.com" required></div>
+                            <p class="tz-auth__error" data-api-error="email" hidden></p>
                         </div>
                     </div>
                     <div class="tz-auth__form-row">
                         <div class="tz-auth__field">
                             <label for="password">Password</label>
                             <div class="tz-auth__input"><i class="fa fa-lock" aria-hidden="true"></i><input id="password" type="password" name="password" autocomplete="new-password" placeholder="At least 8 characters" required><button type="button" data-password-toggle aria-controls="password" aria-label="Show password" aria-pressed="false"><i class="fa fa-eye" aria-hidden="true"></i></button></div>
-                            @error('password')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                            <p class="tz-auth__error" data-api-error="password" hidden></p>
                         </div>
                         <div class="tz-auth__field">
                             <label for="password_confirmation">Confirm password</label>

@@ -104,15 +104,16 @@
                     </div>
                 @endif
 
-                <form action="{{ route('furever.login.store') }}" method="POST" class="tz-auth__form">
+                <form action="{{ route('api.tz.login') }}" method="POST" class="tz-auth__form" data-api-form>
                     @csrf
+                    <div class="tz-auth__message is-error" role="alert" data-api-error="general" hidden></div>
                     <div class="tz-auth__field">
                         <label for="login">Username or email</label>
                         <div class="tz-auth__input">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
-                            <input id="login" type="text" name="login" value="{{ old('login') }}" autocomplete="username" placeholder="Enter username or email" required autofocus>
+                            <input id="login" type="text" name="login" autocomplete="username" placeholder="Enter username or email" required autofocus>
                         </div>
-                        @error('login')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                        <p class="tz-auth__error" data-api-error="login" hidden></p>
                     </div>
 
                     <div class="tz-auth__field">
@@ -127,7 +128,7 @@
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </button>
                         </div>
-                        @error('password')<p class="tz-auth__error">{{ $message }}</p>@enderror
+                        <p class="tz-auth__error" data-api-error="password" hidden></p>
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: center;">

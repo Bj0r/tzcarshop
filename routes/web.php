@@ -66,24 +66,19 @@ Route::get('/p3/shop', [TzController::class, 'shop'])
 
 /*
 |--------------------------------------------------------------------------
-| FurEver Authentication
+| FurEver Authentication pages
 |--------------------------------------------------------------------------
+|
+| Only the pages live here. Login, register, and logout are submitted to
+| the JSON API (POST /api/tz/login, /api/tz/register, /api/tz/logout).
+|
 */
 
 Route::get('/p3/login', [TzAuthController::class, 'create'])
     ->name('furever.login');
 
-Route::post('/p3/login', [TzAuthController::class, 'store'])
-    ->name('furever.login.store');
-
 Route::get('/p3/register', [TzAuthController::class, 'createRegistration'])
     ->name('furever.register');
-
-Route::post('/p3/register', [TzAuthController::class, 'register'])
-    ->name('furever.register.store');
-
-Route::post('/p3/logout', [TzAuthController::class, 'destroy'])
-    ->name('furever.logout');
 
 Route::post('/p3/reserve', [TzController::class, 'reserve'])
     ->name('furever.reserve');
@@ -187,40 +182,20 @@ Route::middleware('furever.admin')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| SHOPPING CART
+| CUSTOMER CART & ORDERS PAGES
 |--------------------------------------------------------------------------
-*/
-
-/*
-|--------------------------------------------------------------------------
-| Add Product to Cart
-|--------------------------------------------------------------------------
+|
+| These pages only render the layout. Add to cart, quantity updates,
+| checkout, and order actions go through the JSON API in routes/api.php.
+|
 */
 
 Route::middleware('furever.authenticated')->group(function () {
-    Route::get('/p3/orders', [TzController::class, 'customerOrders'])
-        ->name('furever.customer-orders');
-
-    Route::patch('/p3/orders/{order}/received', [TzController::class, 'confirmOrderReceived'])
-        ->name('furever.customer-orders.received');
-
-    Route::patch('/p3/orders/{order}/cancel', [TzController::class, 'cancelCustomerOrder'])
-        ->name('furever.customer-orders.cancel');
-
-    Route::post('/p3/cart/{id}', [TzController::class, 'addToCart'])
-        ->name('furever.add-cart');
-
     Route::get('/p3/cart', [TzController::class, 'cart'])
         ->name('furever.cart');
 
-    Route::post('/p3/cart/update/{id}', [TzController::class, 'updateCart'])
-        ->name('furever.update-cart');
-
-    Route::delete('/p3/cart/{id}', [TzController::class, 'removeCart'])
-        ->name('furever.remove-cart');
-
-    Route::post('/p3/checkout', [TzController::class, 'checkout'])
-        ->name('furever.checkout');
+    Route::get('/p3/orders', [TzController::class, 'customerOrders'])
+        ->name('furever.customer-orders');
 });
 
 /*

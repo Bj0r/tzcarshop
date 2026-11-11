@@ -15,7 +15,7 @@ class TzVehicleSeederTest extends TestCase
     {
         $this->seed(DatabaseSeeder::class);
 
-        $this->assertDatabaseCount('products', 11);
+        $this->assertDatabaseCount('products', 20);
         $this->assertDatabaseHas('products', [
             'name' => 'Toyota GR Supra',
             'category' => 'Toyota',
@@ -26,7 +26,7 @@ class TzVehicleSeederTest extends TestCase
         $this->assertDatabaseHas('products', ['name' => 'Toyota GR Yaris']);
         $this->assertDatabaseHas('products', ['name' => 'Toyota Fortuner']);
         $this->assertSame(0, Product::query()->whereNull('image')->count());
-        $this->assertSame(11, Product::query()->where('image', 'like', 'https://images.unsplash.com/%')->count());
+        $this->assertSame(20, Product::query()->where('image', 'like', 'https://images.unsplash.com/%')->count());
     }
 
     public function test_vehicle_seeding_is_idempotent(): void
@@ -34,6 +34,6 @@ class TzVehicleSeederTest extends TestCase
         $this->seed(DatabaseSeeder::class);
         $this->seed(DatabaseSeeder::class);
 
-        $this->assertDatabaseCount('products', 11);
+        $this->assertDatabaseCount('products', 20);
     }
 }

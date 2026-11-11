@@ -17,7 +17,7 @@
         <a href="{{ route('furever.products.create') }}" class="nav-cta-button" style="text-decoration:none;">
             <i class="fa fa-plus" aria-hidden="true"></i> Add Car
         </a>
-        <form action="{{ route('furever.logout') }}" method="POST" style="display:inline;">
+        <form action="{{ route('api.tz.logout') }}" method="POST" data-api-form style="display:inline;">
             @csrf
             <button type="submit" class="nav-badge-link tz-nav-logout" style="background:none; border:1px solid rgba(255,255,255,0.1); cursor:pointer;">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>

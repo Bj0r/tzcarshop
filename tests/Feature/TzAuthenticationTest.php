@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,14 @@ class TzAuthenticationTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Same-origin browser requests send a Referer, which makes Sanctum use the session.
+        $this->withHeader('Referer', 'http://localhost');
+    }
+
     public function test_login_page_uses_the_tz_carshop_authentication_design(): void
     {
         $this->get(route('furever.login'))
@@ -19,15 +28,15 @@ class TzAuthenticationTest extends TestCase
             ->assertSee('Welcome back')
             ->assertSee('Customers and administrators can sign in')
             ->assertSee('data-tz-auth', false)
-            ->assertDontSee('img/tz-mark.svg', false);
+            ->assertSee('img/tz-mark.svg', false)
+            ->assertSee(route('api.tz.login'));
     }
 
     public function test_guest_navigation_offers_customer_sign_in_and_registration(): void
     {
         $this->get(route('furever'))
             ->assertSee('<strong>TZ</strong>', false)
-            ->assertSee('tz-wordmark__badge', false)
-            ->assertSee('fa fa-car', false)
+            ->assertSee('img/tz-mark.svg', false)
             ->assertSee('>Sign in</a>', false)
             ->assertSee('>Create account</a>', false)
             ->assertSee(route('furever.login'))
@@ -42,19 +51,22 @@ class TzAuthenticationTest extends TestCase
             ->assertSee('TZ Carshop')
             ->assertSee('Create your account')
             ->assertSee('data-tz-auth', false)
-            ->assertDontSee('img/tz-mark.svg', false);
+            ->assertSee('img/tz-mark.svg', false)
+            ->assertSee(route('api.tz.register'));
     }
 
     public function test_admin_can_sign_in_with_a_database_username(): void
     {
         $admin = $this->makeUser('admin', 'active');
 
-        $response = $this->post(route('furever.login.store'), [
+        $response = $this->postJson(route('api.tz.login'), [
             'login' => $admin->username,
             'password' => 'secret123',
         ]);
 
-        $response->assertRedirect(route('furever.dashboard'));
+        $response->assertOk()
+            ->assertJsonPath('user.role', 'admin')
+            ->assertJsonPath('redirect', route('furever.dashboard'));
         $this->assertAuthenticatedAs($admin);
     }
 
@@ -77,9 +89,9 @@ class TzAuthenticationTest extends TestCase
         $response = $this->actingAs($admin)->get(route('furever.dashboard'));
 
         $response
-            ->assertSee('Product Management')
-            ->assertSee('Customer Management')
-            ->assertSee('Cart & Order Management')
+            ->assertOk()
+            ->assertSee('Admin dashboard')
+            ->assertSee('Manage your Toyota inventory, customers, carts, and orders.')
             ->assertSee(route('furever.products'))
             ->assertSee(route('furever.customers'))
             ->assertSee(route('furever.orders'))
@@ -101,7 +113,7 @@ class TzAuthenticationTest extends TestCase
 
     public function test_customer_can_register_and_is_sent_to_the_shop(): void
     {
-        $response = $this->post(route('furever.register.store'), [
+        $response = $this->postJson(route('api.tz.register'), [
             'name' => 'Shop Customer',
             'username' => 'shop.customer',
             'email' => 'shop.customer@example.com',
@@ -109,7 +121,10 @@ class TzAuthenticationTest extends TestCase
             'password_confirmation' => 'secret123',
         ]);
 
-        $response->assertRedirect(route('furever.shop'));
+        $response->assertCreated()
+            ->assertJsonPath('user.username', 'shop.customer')
+            ->assertJsonPath('redirect', route('furever.shop'))
+            ->assertJsonMissingPath('user.password');
         $this->assertAuthenticated();
         $this->assertDatabaseHas('users', [
             'username' => 'shop.customer',
@@ -122,12 +137,12 @@ class TzAuthenticationTest extends TestCase
     {
         $customer = $this->makeUser('customer', 'active');
 
-        $response = $this->post(route('furever.login.store'), [
+        $response = $this->postJson(route('api.tz.login'), [
             'login' => $customer->email,
             'password' => 'secret123',
         ]);
 
-        $response->assertRedirect(route('furever.shop'));
+        $response->assertOk()->assertJsonPath('redirect', route('furever.shop'));
         $this->assertAuthenticatedAs($customer);
     }
 
@@ -135,15 +150,63 @@ class TzAuthenticationTest extends TestCase
     {
         $customer = $this->makeUser('customer', 'inactive');
 
-        $response = $this->from(route('furever.login'))
-            ->post(route('furever.login.store'), [
-                'login' => $customer->username,
-                'password' => 'secret123',
-            ]);
+        $this->postJson(route('api.tz.login'), [
+            'login' => $customer->username,
+            'password' => 'secret123',
+        ])->assertUnprocessable()->assertJsonValidationErrors('login');
 
-        $response->assertRedirect(route('furever.login'));
-        $response->assertSessionHasErrors('login');
         $this->assertGuest();
+    }
+
+    public function test_wrong_password_cannot_sign_in(): void
+    {
+        $customer = $this->makeUser('customer', 'active');
+
+        $this->postJson(route('api.tz.login'), [
+            'login' => $customer->username,
+            'password' => 'wrong-password',
+        ])->assertUnprocessable()->assertJsonValidationErrors('login');
+
+        $this->assertGuest();
+    }
+
+    public function test_registration_validates_input_and_unique_accounts(): void
+    {
+        $this->makeUser('customer', 'active');
+
+        $this->postJson(route('api.tz.register'), [
+            'name' => '',
+            'username' => 'customer.active',
+            'email' => 'not-an-email',
+            'password' => 'short',
+            'password_confirmation' => 'different',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['name', 'username', 'email', 'password']);
+
+        $this->assertGuest();
+    }
+
+    public function test_signed_in_customer_can_read_their_account_and_log_out(): void
+    {
+        $customer = $this->makeUser('customer', 'active');
+
+        $this->actingAs($customer)
+            ->getJson(route('api.tz.user'))
+            ->assertOk()
+            ->assertJsonPath('user.email', $customer->email)
+            ->assertJsonMissingPath('user.password');
+
+        $this->actingAs($customer)
+            ->postJson(route('api.tz.logout'))
+            ->assertOk()
+            ->assertJsonPath('redirect', route('furever.login'));
+
+        $this->assertGuest('web');
+    }
+
+    public function test_guest_cannot_read_account_api(): void
+    {
+        $this->getJson(route('api.tz.user'))->assertUnauthorized();
     }
 
     public function test_customer_cannot_open_admin_management(): void
@@ -181,27 +244,27 @@ class TzAuthenticationTest extends TestCase
     {
         $customer = $this->makeUser('customer', 'active');
 
-        $response = $this->actingAs($customer)
-            ->withSession([
-                'cart' => [
-                    1 => [
-                        'id' => 1,
-                        'name' => 'Toyota GR Supra',
-                        'price' => 5396000,
-                        'image' => 'https://example.com/toyota-gr-supra.jpg',
-                        'quantity' => 1,
-                        'stock' => 2,
-                    ],
-                ],
-            ])
-            ->get(route('furever.cart'));
+        $product = Product::create([
+            'name' => 'Toyota GR Supra',
+            'category' => 'Toyota',
+            'price' => 5396000,
+            'stock' => 2,
+            'image' => 'https://example.com/toyota-gr-supra.jpg',
+        ]);
 
-        $response
+        $this->actingAs($customer)
+            ->get(route('furever.cart'))
             ->assertOk()
             ->assertSee('Toyota vehicle')
-            ->assertSee('https://example.com/toyota-gr-supra.jpg', false)
-            ->assertDontSee('storage/https://example.com', false)
             ->assertDontSee('FurEver Product');
+
+        // Cart items are loaded by the page from the cart API.
+        $this->actingAs($customer)
+            ->withSession(['cart' => [$product->id => ['id' => $product->id, 'quantity' => 1]]])
+            ->getJson(route('api.tz.cart.index'))
+            ->assertOk()
+            ->assertJsonPath('data.items.0.name', 'Toyota GR Supra')
+            ->assertJsonPath('data.items.0.image', 'https://example.com/toyota-gr-supra.jpg');
     }
 
     private function makeUser(string $role, string $status): User

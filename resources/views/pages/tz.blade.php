@@ -74,7 +74,7 @@
                         <span class="nav-cart-count">{{ $navCartCount }}</span>
                     </a>
                 @endif
-                <form action="{{ route('furever.logout') }}" method="POST" style="display:inline;">
+                <form action="{{ route('api.tz.logout') }}" method="POST" data-api-form style="display:inline;">
                     @csrf
                     <button type="submit" class="nav-badge-link" style="background:none; border:none; cursor:pointer;">Exit</button>
                 </form>
