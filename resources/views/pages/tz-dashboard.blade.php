@@ -83,4 +83,6 @@
             </section>
         </div>
     </main>
+
+    @include('pages.partials.tz-footer')
 </x-layout>

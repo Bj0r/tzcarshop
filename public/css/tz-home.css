@@ -315,7 +315,8 @@
    draws the video frame that matches the scroll position.
    ========================================================================== */
 .hero-scrub {
-    height: 320vh;
+    /* Taller = more scrolling per video frame = slower car. */
+    height: 480vh;
 }
 
 .hero-scrub .hero-scrub__stage {
@@ -417,7 +418,7 @@
 
 @media (max-width: 768px) {
     .hero-scrub {
-        height: 260vh;
+        height: 380vh;
     }
 
     .hero-scrub__outro {

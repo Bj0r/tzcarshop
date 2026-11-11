@@ -124,7 +124,7 @@
                 const actions = isAdmin
                     ? '<a href="' + editUrlTemplate.replace('__ID__', product.id) + '" class="cinematic-btn cinematic-btn--ghost" title="Edit Vehicle"><i class="fa fa-pencil"></i></a>'
                     : '<button type="button" class="cinematic-btn cinematic-btn--gold" style="flex: 1;" data-add-to-cart="' + product.id + '"' + (inStock ? '' : ' disabled') + '>'
-                        + '<i class="fa fa-shopping-bag"></i> <span>' + (inStock ? 'Add to Cart' : 'Allocated') + '</span></button>';
+                        + '<i class="fa fa-shopping-bag"></i> <span>' + (inStock ? 'Add to Cart' : 'Out of stock') + '</span></button>';
 
                 return '<article class="cinematic-vehicle-card">'
                     + '<div class="cinematic-vehicle-card__media">'
@@ -141,7 +141,7 @@
                     + '<h2 class="cinematic-vehicle-card__title">' + window.tzEscape(product.name) + '</h2>'
                     + '<div class="cinematic-vehicle-card__meta">'
                     + (product.color ? '<span><i class="fa fa-paint-brush" style="color:var(--accent-gold); margin-right:4px;"></i> ' + window.tzEscape(product.color) + '</span>' : '')
-                    + '<span><i class="fa fa-check-circle" style="color: ' + (inStock ? '#4ade80' : '#f87171') + '; margin-right:4px;"></i> ' + (inStock ? product.stock + ' Available' : 'Allocated') + '</span>'
+                    + '<span><i class="fa fa-check-circle" style="color: ' + (inStock ? '#4ade80' : '#f87171') + '; margin-right:4px;"></i> ' + (inStock ? product.stock + ' Available' : 'Out of stock') + '</span>'
                     + '</div>'
                     + (description ? '<p style="font-size: 13px; color: var(--dim-white); line-height: 1.55; margin-bottom: 16px; flex-grow: 1;">' + window.tzEscape(description) + '</p>' : '')
                     + '<div class="cinematic-vehicle-card__price">' + window.tzMoney(product.price) + '</div>'

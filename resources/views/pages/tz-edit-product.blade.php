@@ -53,4 +53,6 @@
             </form>
         </main>
     </div>
+
+    @include('pages.partials.tz-footer')
 </x-layout>

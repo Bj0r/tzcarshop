@@ -20,8 +20,6 @@
 <body>
 
     @php
-        $navCartCount = $cartCount ?? collect(session('cart', []))->sum('quantity');
-
         // The car in the hero film is a white GR86; show its live name and price from the database.
         $heroVehicle = $products->firstWhere('name', 'Toyota GR86');
 
@@ -35,44 +33,8 @@
         $modelName = fn ($vehicle) => \Illuminate\Support\Str::after($vehicle->name, 'Toyota ');
     @endphp
 
-    {{-- ======================================================================
-         NAVIGATION
-         ====================================================================== --}}
-    <nav class="cinematic-nav" aria-label="Main navigation">
-        <a href="{{ route('furever') }}" class="nav-logo" aria-label="TZ ATELIER home">
-            <img src="{{ asset('img/tz-mark.svg') }}" alt="TZ Mark" class="tz-nav-logo-mark">
-            <strong>TZ</strong><span class="nav-hide-mobile" style="letter-spacing:0.14em; font-weight:800;"> ATELIER</span>
-        </a>
-
-        <div class="nav-links">
-            <a href="{{ route('furever') }}" class="active">Home</a>
-            <a href="{{ route('furever.shop') }}">Collection</a>
-        </div>
-
-        <div class="nav-actions">
-            @auth
-                @if(auth()->user()->isFureverAdmin())
-                    <a href="{{ route('furever.dashboard') }}" class="nav-badge-link nav-hide-mobile">Back to Dashboard</a>
-                    <a href="{{ route('furever.dashboard') }}" class="nav-badge-link">Admin</a>
-                @else
-                    <a href="{{ route('furever.customer-orders') }}" class="nav-badge-link nav-hide-mobile">Commissions</a>
-                    <a href="{{ route('furever.cart') }}" class="nav-badge-link" aria-label="View Cart">
-                        <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                        <span class="nav-cart-count">{{ $navCartCount }}</span>
-                    </a>
-                @endif
-                <form action="{{ route('api.tz.logout') }}" method="POST" data-api-form style="display:inline;">
-                    @csrf
-                    <button type="submit" class="nav-badge-link" style="background:none; border:none; cursor:pointer;">Exit</button>
-                </form>
-            @else
-                <a href="{{ route('furever.login') }}" class="nav-badge-link">Sign in</a>
-                <a href="{{ route('furever.register') }}" class="nav-badge-link nav-hide-mobile">Create account</a>
-            @endauth
-
-            <a href="{{ route('furever.shop') }}" class="nav-cta-button">Shop now</a>
-        </div>
-    </nav>
+    {{-- Shared navigation (same menu as the shop, cart, and orders pages). --}}
+    @include('pages.partials.tz-nav', ['overlay' => true])
 
     <main>
 

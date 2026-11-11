@@ -1173,7 +1173,7 @@ body {
     text-transform: capitalize;
 }
 .fur-order-status--pending { background: rgba(223, 186, 115, 0.18); color: #F0D59E; border: 1px solid rgba(223, 186, 115, 0.4); }
-.fur-order-status--processing { background: rgba(96, 165, 250, 0.18); color: #BFDBFE; border: 1px solid rgba(96, 165, 250, 0.4); }
+.fur-order-status--processing { background: rgba(59, 130, 246, 0.38); color: #FFFFFF; border: 1px solid #3B82F6; }
 .fur-order-status--ready_for_collection { background: rgba(167, 139, 250, 0.18); color: #DDD6FE; border: 1px solid rgba(167, 139, 250, 0.4); }
 .fur-order-status--completed { background: rgba(52, 211, 153, 0.18); color: #A7F3D0; border: 1px solid rgba(52, 211, 153, 0.4); }
 .fur-order-status--cancelled { background: rgba(248, 113, 113, 0.18); color: #FECACA; border: 1px solid rgba(248, 113, 113, 0.4); }

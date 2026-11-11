@@ -24,7 +24,7 @@
                 <p>Customers and administrators can sign in to browse vehicles, continue shopping, or manage the showroom.</p>
 
                 {{-- UNIQUE FLOATING SPEC CARD --}}
-                <div class="tz-auth__car-card" aria-label="Featured Vehicle Allocation">
+                <div class="tz-auth__car-card" aria-label="Featured vehicle">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
                         <div>
                             <span style="font-size: 10px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 2px;">FLAGSHIP ALLOCATION</span>
@@ -74,7 +74,7 @@
                 <header class="tz-auth__heading">
                     <span class="tz-auth__eyebrow">Secure Identification</span>
                     <h2>Welcome back</h2>
-                    <p>Enter your account credentials to access your vehicle allocation portfolio.</p>
+                    <p>Enter your account details to view your cart and orders.</p>
                 </header>
 
                 {{-- QUICK-FILL ROLE SHORTCUTS (UX DELIGHT FOR EVALUATOR / TESTING) --}}

@@ -1329,6 +1329,52 @@ nav.cinematic-nav {
     }
 }
 
+/* ☰ menu button: hidden on wide screens, shows the page links on small screens. */
+.nav-menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+@media (max-width: 960px) {
+    .nav-menu-toggle {
+        display: inline-flex;
+    }
+
+    nav.cinematic-nav .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 6px 6%;
+        background: rgba(4, 4, 7, 0.97);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    nav.cinematic-nav.is-open .nav-links {
+        display: flex;
+    }
+
+    nav.cinematic-nav .nav-links a {
+        padding: 14px 0;
+        font-size: 13px;
+    }
+
+    nav.cinematic-nav .nav-links a + a {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
 /* Phone navigation: keep logo and main actions on one line. */
 @media (max-width: 640px) {
     nav.cinematic-nav {
@@ -1568,9 +1614,10 @@ nav.cinematic-nav.cinematic-subpage-nav {
 }
 
 .cinematic-status--processing {
-    background: rgba(96, 165, 250, 0.18);
-    color: #93C5FD;
-    border: 1px solid rgba(96, 165, 250, 0.4);
+    /* Solid blue with white text so "Processing" is easy to read and stands out. */
+    background: rgba(59, 130, 246, 0.38);
+    color: #FFFFFF;
+    border: 1px solid #3B82F6;
 }
 
 .cinematic-status--ready {
@@ -1825,6 +1872,16 @@ nav.cinematic-nav.cinematic-subpage-nav {
     border-color: var(--accent-gold);
 }
 
+/* The opened option list uses the system colors; force it dark so the white text shows. */
+.cinematic-filter-select {
+    color-scheme: dark;
+}
+
+.cinematic-filter-select option {
+    background: #14161D;
+    color: #FFFFFF;
+}
+
 /* Footer for subpages */
 .cinematic-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -1874,4 +1931,68 @@ nav.cinematic-nav.cinematic-subpage-nav {
     font-size: 11px;
     letter-spacing: 0.06em;
     color: var(--whisper);
+}
+
+/* ==========================================================================
+   SHARED FOOTER (resources/views/pages/partials/tz-footer.blade.php)
+   Brand on the left, two link columns, copyright bar underneath.
+   ========================================================================== */
+.tz-footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+}
+
+.tz-footer__brand p {
+    max-width: 320px;
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--dim-white);
+}
+
+.tz-footer__column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tz-footer__column h2 {
+    margin: 0 0 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+}
+
+.tz-footer__column a {
+    font-size: 13px;
+    color: var(--dim-white);
+}
+
+.tz-footer__column a:hover {
+    color: #fff;
+}
+
+.tz-footer__bottom {
+    max-width: 1400px;
+    margin: 32px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--whisper);
+}
+
+@media (max-width: 640px) {
+    .tz-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tz-footer__brand {
+        grid-column: 1 / -1;
+    }
 }

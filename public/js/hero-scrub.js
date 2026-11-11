@@ -144,12 +144,20 @@
         }
 
         /* ---- Scroll ---- */
-        function update() {
-            ticking = false;
+        // The film glides toward the scroll position instead of jumping to it,
+        // so a fast flick of the mouse wheel still plays the car slowly and smoothly.
+        // Lower EASE = slower, smoother catch-up (share of the remaining distance per frame).
+        var EASE = 0.08;
+        var smoothProgress = null;
 
+        function scrollProgress() {
             var rect = section.getBoundingClientRect();
             var travel = section.offsetHeight - window.innerHeight;
-            var progress = travel > 0 ? clamp(-rect.top / travel) : 0;
+
+            return travel > 0 ? clamp(-rect.top / travel) : 0;
+        }
+
+        function render(progress) {
             var filmProgress = clamp(progress / FILM_END);
 
             targetIndex = Math.round(filmProgress * (count - 1));
@@ -170,11 +178,34 @@
                 outro.classList.toggle('is-visible', outroShow > 0.5);
             }
 
-            // Fade the whole stage at the very end, into the next scene.
+            // Fade the whole stage at the very end, into the next section.
             stage.style.setProperty('--hero-fade', String(1 - clamp((progress - 0.9) / 0.1)));
 
             if (bar) {
                 bar.style.transform = 'scaleX(' + filmProgress + ')';
+            }
+        }
+
+        function update() {
+            ticking = false;
+
+            var target = scrollProgress();
+
+            if (smoothProgress === null) {
+                smoothProgress = target; // first paint: no glide
+            }
+
+            smoothProgress += (target - smoothProgress) * EASE;
+
+            if (Math.abs(target - smoothProgress) < 0.0005) {
+                smoothProgress = target;
+            }
+
+            render(smoothProgress);
+
+            // Keep gliding until the film has caught up with the scroll position.
+            if (smoothProgress !== target) {
+                requestUpdate();
             }
         }
 

@@ -286,4 +286,6 @@
             });
         </script>
     @endif
+
+    @include('pages.partials.tz-footer')
 </x-layout>

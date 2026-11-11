@@ -9,7 +9,7 @@
                 <div>
                     <span class="cinematic-subpage-eyebrow">TZ ATELIER &bull; CLIENT PORTFOLIO</span>
                     <h1 class="cinematic-subpage-title">Your orders &bull; Vehicle Commissions</h1>
-                    <p class="cinematic-subpage-subtitle">Track the allocation, preparation, and handover status of your commissioned vehicles.</p>
+                    <p class="cinematic-subpage-subtitle">Track the preparation and handover status of your vehicle orders.</p>
                 </div>
                 <div>
                     <span class="nav-badge-link" style="font-size: 12px;">
@@ -35,7 +35,7 @@
                             <thead>
                                 <tr>
                                     <th>Commission #</th>
-                                    <th>Vehicle Allocation</th>
+                                    <th>Vehicles</th>
                                     <th>Total Investment</th>
                                     <th>Placed</th>
                                     <th>Handover Date</th>
